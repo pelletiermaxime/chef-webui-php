@@ -4,7 +4,7 @@
 @include('_layouts.messages')
 
 <a href="{{ route('databags.create') }}">
-<!-- <button type="submit" class="btn btn-primary btn-lg">Create</button> -->
+<button type="submit" class="btn btn-primary btn-lg">Create</button>
 </a>
 
 <table class="table">
@@ -26,7 +26,11 @@
         @endif
     </td>
     <td>
+        @if ($data_item === '')
         <a href="{{ route('databags.show', $id) }}">Edit</a>
+        @else
+        <a href="{{ route('databags.editItem', [$data_item, $id]) }}">Edit</a>
+        @endif
     </td>
     <td>
         <a href="{{ route('databags.destroy', $id) }}">Delete</a>

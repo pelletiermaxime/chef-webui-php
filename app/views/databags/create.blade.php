@@ -3,29 +3,14 @@
 @section('main')
 {{ Form::model($item, array('route' => 'databags.store')) }}
 
-    {{ Form::hidden('action', $info['action']) }}
-    {{ Form::hidden('item_name', $info['item_name']) }}
-    {{ Form::hidden('databag_name', $info['databag_name']) }}
+{{ Form::hidden('databag_name', '') }}
 
-    @foreach ($item as $field => $value)
-    <?php
-    $attributes = [];
-    $attributes['class'] = 'form-control';
-    if ($field == 'id' && $info['action'] == 'modify') {
-        $attributes[] = 'readonly';
-    }
-    ?>
-    <div class="form-group">
-        {{ Form::label($field, $field) }}
-    @if (strlen($value) > 120)
-        {{ Form::textarea($field, null, $attributes) }}
-     @else
-        {{ Form::text($field, null, $attributes) }}
-     @endif
-    </div>
-    @endforeach
+<div class="form-group">
+    {{ Form::label('name', 'Name') }}
+    {{ Form::text('name', null, ['class' => 'form-control']) }}
+</div>
 
-    {{ Form::submit('Save', ['class' => 'btn btn-primary']) }}
+{{ Form::submit('Save', ['class' => 'btn btn-primary']) }}
 {{Form::close()}}
 @stop
 

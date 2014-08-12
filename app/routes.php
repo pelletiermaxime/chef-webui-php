@@ -13,8 +13,34 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::resource('databags', 'DatabagsController');
-Route::get('/databags/{databags}/item/{item}', [
-    'as'   => 'databags.editItem',
-    'uses' => 'DatabagsController@editItem',
-]);
+// Route::resource('databags', 'DatabagsController');
+Route::group(['prefix' => 'databags', /*'before' => 'auth'*/], function () {
+        Route::get('/', [
+        'as'   => 'databags.index',
+        'uses' => 'DatabagsController@index',
+    ]);
+
+    Route::get('/create', [
+        'as'   => 'databags.create',
+        'uses' => 'DatabagsController@create',
+    ]);
+
+    Route::post('/', [
+        'as'   => 'databags.store',
+        'uses' => 'DatabagsController@store',
+    ]);
+
+    Route::get('/{databags}', [
+        'as'   => 'databags.show',
+        'uses' => 'DatabagsController@show',
+    ]);
+
+    Route::get('/{databags}/item/{item}', [
+        'as'   => 'databags.editItem',
+        'uses' => 'DatabagsController@editItem',
+    ]);
+    Route::get('/delete/{id}', [
+        'as'   => 'databags.destroy',
+        'uses' => 'DatabagsController@delete',
+    ]);
+});
