@@ -20,7 +20,7 @@ Route::group(['prefix' => 'databags', /*'before' => 'auth'*/], function () {
         'uses' => 'DatabagsController@index',
     ]);
 
-    Route::get('/create', [
+    Route::get('/create/{item?}', [
         'as'   => 'databags.create',
         'uses' => 'DatabagsController@create',
     ]);

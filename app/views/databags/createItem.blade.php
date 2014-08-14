@@ -3,11 +3,13 @@
 @section('main')
 {{ Form::open(array('route' => 'databags.store')) }}
 
-<h1>Create databag</h1>
+{{ Form::hidden('databag_item', $item) }}
+
+<h1>Create item for databag <b>{{ $item }}</b></h1>
 
 <div class="form-group">
-    {{ Form::label('name', 'Name') }}
-    {{ Form::text('name', null, ['class' => 'form-control']) }}
+    {{ Form::label('id', 'ID') }}
+    {{ Form::text('id', null, ['class' => 'form-control']) }}
 </div>
 
 {{ Form::submit('Save', ['class' => 'btn btn-primary']) }}

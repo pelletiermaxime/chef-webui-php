@@ -43,11 +43,14 @@ class DatabagsController extends BaseController
             ->withItem($dataItem);
     }
 
-    public function create()
+    public function create($item = '')
     {
-        $dataItem = new Stdclass();
-        return View::make('databags/create')
-            ->withItem($dataItem);
+        if (empty($item)) {
+            return View::make('databags/create');
+        } else {
+            return View::make('databags/createItem')
+                ->withItem($item);
+        }
     }
 
     public function store()
@@ -58,27 +61,33 @@ class DatabagsController extends BaseController
         $input = (object) Input::all();
         $item_value = (object) Input::except(['item_name', 'databag_name', '_token', 'action']);
 
-        if ($input->action == 'modify') {
-            Chef::put("/data/{$input->databag_name}/{$input->item_name}", $item_value);
-        } else {
-            Chef::post("/data", $item_value);
-        }
+        Chef::put("/data/{$input->databag_name}/{$input->item_name}", $item_value);
 
         $successMessage = "Databag {$input->databag_name}/{$input->item_name} saved.";
-        return Redirect::route('databags.index')->withSuccess($successMessage);
+        return Redirect::route($redirect)->withSuccess($successMessage);
     }
 
     public function storeCreate()
     {
+        $redirect = 'databags.index';
         $item_value = (object) Input::except(['databag_name', '_token']);
 
         $url = '/data';
+
+        if (isset($item_value->databag_item)) {
+            $databag_name = $item_value->id;
+            // $redirect = 'databags.show';
+            $url .= "/{$item_value->databag_item}";
+        } else {
+            $databag_name = $item_value->name;
+        }
+
         Chef::post($url, $item_value);
 
         Cache::forget($url);
 
-        $successMessage = "Databag {$item_value->name} created.";
-        return Redirect::route('databags.index')->withSuccess($successMessage);
+        $successMessage = "Databag $databag_name created.";
+        return Redirect::route($redirect)->withSuccess($successMessage);
     }
 
     public function delete($id)
