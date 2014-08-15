@@ -33,7 +33,11 @@
         @endif
     </td>
     <td>
+        @if ($data_item === '')
         <a href="{{ route('databags.destroy', $id) }}">Delete</a>
+        @else
+        <a href="{{ route('databags.destroyItem', [$data_item, $id]) }}">Delete</a>
+        @endif
     </td>
 </tr>
 @endforeach

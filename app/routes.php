@@ -39,8 +39,14 @@ Route::group(['prefix' => 'databags', /*'before' => 'auth'*/], function () {
         'as'   => 'databags.editItem',
         'uses' => 'DatabagsController@editItem',
     ]);
-    Route::get('/delete/{id}', [
+
+    Route::get('/destroy/{id}', [
         'as'   => 'databags.destroy',
-        'uses' => 'DatabagsController@delete',
+        'uses' => 'DatabagsController@destroy',
+    ]);
+
+    Route::get('/destroyItem/{databags}/{id}', [
+        'as'   => 'databags.destroyItem',
+        'uses' => 'DatabagsController@destroyItem',
     ]);
 });

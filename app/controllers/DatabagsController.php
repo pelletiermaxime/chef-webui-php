@@ -90,11 +90,19 @@ class DatabagsController extends BaseController
         return Redirect::route($redirect)->withSuccess($successMessage);
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $url = "/data/$id";
         Chef::delete($url);
         Cache::forget('/data');
         return Redirect::route('databags.index')->withSuccess("Databag $id deleted.");
+    }
+
+    public function destroyItem($item, $id)
+    {
+        $url = "/data/$item/$id";
+        Chef::delete($url);
+        Cache::forget("/data/$item");
+        return Redirect::route('databags.show', $item)->withSuccess("Databag $id deleted.");
     }
 }
