@@ -12,5 +12,5 @@ public/packages/barryvdh
 *.sqlite
 _ide_helper.php
 _ide_helper_models.php
-config/local
-config/packages/jenssegers/chef/local
+app/config/local
+app/config/packages/jenssegers/chef/local/config.php
