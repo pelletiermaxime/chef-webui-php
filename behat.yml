@@ -1,0 +1,25 @@
+default:
+    formatters:
+        pretty: true
+        # parameters:
+        #     decorated:              true
+        #     verbose:                false
+        #     time:                   true
+        #     language:               fr
+        #     output_path:            null
+        #     multiline_arguments:    true
+    autoload:
+        - %paths.base%/app/tests/features/bootstrap
+    suites:
+        test:
+            paths:
+                - %paths.base%/app/tests/features
+    extensions:
+        Behat\MinkExtension:
+            # selenium2: ~
+            goutte: ~
+            zombie: ~
+            base_url: http://localhost:8000
+    gherkin:
+        filters:
+            tags: "~@wip"

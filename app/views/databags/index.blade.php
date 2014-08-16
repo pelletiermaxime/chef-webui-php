@@ -1,7 +1,6 @@
 @extends('_layouts.default')
 
 @section('main')
-@include('_layouts.messages')
 
 <a href="{{ route('databags.create', $data_item) }}">
 <button type="submit" class="btn btn-primary btn-lg">Create</button>

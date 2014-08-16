@@ -70,7 +70,15 @@ class DatabagsController extends BaseController
     public function storeCreate()
     {
         $redirect = 'databags.index';
-        $item_value = (object) Input::except(['databag_name', '_token']);
+        $item_value = Input::except(['databag_name', '_token']);
+
+        $validator = Validator::make($item_value, Databags::$rules);
+
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+
+        $item_value = (object) $item_value;
 
         $url = '/data';
 
