@@ -16,11 +16,13 @@ default:
                 - %paths.base%/app/tests/features
     extensions:
         Behat\MinkExtension:
-            # selenium2: ~
+            # selenium2:
+                # browser: chrome
             goutte: ~
             # zombie: ~
             # sahi: ~
-            base_url: http://localhost:8000
+            # base_url: http://localhost:8000
+            base_url: http://127.0.0.1/
             show_cmd: firefox-bin %s
     gherkin:
         filters:
