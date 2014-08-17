@@ -3,7 +3,7 @@
     <head>
         <title>@yield('title')</title>
         <!-- Bootstrap -->
-        <link href="{{ asset("assets/css/lavish-bootstrap.css") }}" rel="stylesheet">
+        <link href="{{ asset("assets/css/slate-bootstrap.min.css") }}" rel="stylesheet">
     </head>
     <body>
         <div class="container-fluid">
