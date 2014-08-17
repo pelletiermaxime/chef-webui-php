@@ -18,8 +18,10 @@ default:
         Behat\MinkExtension:
             # selenium2: ~
             goutte: ~
-            zombie: ~
+            # zombie: ~
+            # sahi: ~
             base_url: http://localhost:8000
+            show_cmd: firefox-bin %s
     gherkin:
         filters:
             tags: "~@wip"

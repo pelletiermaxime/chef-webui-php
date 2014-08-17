@@ -21,4 +21,17 @@ class FeatureContext extends MinkContext
     public function __construct()
     {
     }
+
+     /**
+    * Take screenshot when step fails.
+    * Works only with Selenium2Driver.
+    *
+    * @AfterStep
+    */
+    public function takeScreenshotAfterFailedStep($event)
+    {
+        if ($event->getTestResult()->hasException()) {
+            $this->showLastResponse();
+        }
+    }
 }
