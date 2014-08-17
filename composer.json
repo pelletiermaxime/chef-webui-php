@@ -11,8 +11,6 @@
 		,"way/generators": "dev-master"
 	},
 	"require-dev": {
-		"behat/behat": "3.*"
-		,"behat/mink-extension": "2.*"
 	},
 	"autoload": {
 		"classmap": [
