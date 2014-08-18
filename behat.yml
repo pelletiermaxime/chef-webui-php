@@ -16,7 +16,7 @@ default:
                 - %paths.base%/app/tests/features
     extensions:
         Behat\MinkExtension:
-            goutte: ~
+            # goutte: ~
             selenium2:
                 browser: chrome
             # zombie: ~

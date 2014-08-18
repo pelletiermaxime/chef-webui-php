@@ -19,6 +19,7 @@
         <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
         <script src="{{ asset("assets/js/jquery-2.1.1.min.js") }}"></script>
         <script src="{{ asset("assets/js/bootstrap.min.js") }}"></script>
+        <script src="{{ asset("assets/js/databags.js") }}"></script>
         @yield('script')
     </body>
 </html>
