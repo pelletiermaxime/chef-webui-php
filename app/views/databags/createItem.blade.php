@@ -14,10 +14,10 @@
 </div>
 
 <div class="form-group hidden add_field_template">
-    {{ Form::label('item_name', 'Item name') }}
-    {{ Form::text('item_name[]', null, ['class' => 'form-control item_name']) }}
-    {{ Form::label('item_value', 'Item value') }}
-    {{ Form::text('item_value[]', null, ['class' => 'form-control item_value']) }}
+    <label for="item_name">Item name</label>
+    <input id="item_name" class="form-control item_name" type="text">
+    <label for="item_value">Item value</label>
+    <input id="item_value" class="form-control item_value" type="text">
     <button type="button" class="btn btn-default add_field">Add field</button>
     <button type="button" class="btn btn-default remove_field">Remove field</button>
 </div>
