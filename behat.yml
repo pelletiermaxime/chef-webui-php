@@ -26,4 +26,4 @@ default:
             show_cmd: firefox %s
     gherkin:
         filters:
-            tags: "~@wip"
+            # tags: "~@wip"
