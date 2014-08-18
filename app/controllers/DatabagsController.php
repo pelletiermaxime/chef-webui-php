@@ -114,7 +114,7 @@ class DatabagsController extends BaseController
 
         Cache::forget($url);
 
-        $successMessage = "Databag item {$item_value->id} created.";
+        $successMessage = "Databag item $databag_name created.";
         return Redirect::route('databags.show', $item_value->databag_item)->withSuccess($successMessage);
     }
 

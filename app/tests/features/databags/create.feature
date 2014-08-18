@@ -1,5 +1,6 @@
-Feature: Create databags
+Feature: Create databags and databags items
     I should be able to create databags with their name
+    and databag items with their id
 
     Scenario: Create invalid databag "test databag 1"
       Given I am on homepage
