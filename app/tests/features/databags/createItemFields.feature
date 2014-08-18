@@ -22,3 +22,8 @@ Feature: Create databags items with custom fields
     And I press "Add field"
     Then the "item_name_2" field should contain ""
     And the "item_value_2" field should contain ""
+
+  Scenario: Delete the first field
+    When I press "remove_field_1"
+    Then I should see 3 ".add_field" element
+    Then I should see 2 ".remove_field" element
