@@ -69,10 +69,13 @@ class DatabagsController extends BaseController
 
     public function storeCreate()
     {
-        $redirect = 'databags.index';
         $item_value = Input::except(['databag_name', '_token']);
 
-        $validator = Validator::make($item_value, Databags::$rules);
+        if (isset($item_value['databag_item'])) {
+            return $this->storeCreateItem();
+        }
+
+        $validator = Validator::make($item_value, Databags::$rulesCreate);
 
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator)->withInput();
@@ -82,20 +85,37 @@ class DatabagsController extends BaseController
 
         $url = '/data';
 
-        if (isset($item_value->databag_item)) {
-            $databag_name = $item_value->id;
-            // $redirect = 'databags.show';
-            $url .= "/{$item_value->databag_item}";
-        } else {
-            $databag_name = $item_value->name;
-        }
+        $databag_name = $item_value->name;
 
         Chef::post($url, $item_value);
 
         Cache::forget($url);
 
         $successMessage = "Databag $databag_name created.";
-        return Redirect::route($redirect)->withSuccess($successMessage);
+        return Redirect::route('databags.index')->withSuccess($successMessage);
+    }
+
+    public function storeCreateItem()
+    {
+        $item_value = Input::except(['databag_name', '_token']);
+
+        $validator = Validator::make($item_value, Databags::$rulesCreateItem);
+
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+
+        $item_value = (object) $item_value;
+
+        $databag_name = $item_value->id;
+        $url = "/data/{$item_value->databag_item}";
+
+        Chef::post($url, $item_value);
+
+        Cache::forget($url);
+
+        $successMessage = "Databag item {$item_value->id} created.";
+        return Redirect::route('databags.show', $item_value->databag_item)->withSuccess($successMessage);
     }
 
     public function destroy($id)

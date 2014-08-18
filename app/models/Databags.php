@@ -2,8 +2,15 @@
 
 class Databags {
 
-	public static $rules = [
+	public static $rulesCreate = [
 		'name' => [
+			'required',
+			'regex:/^[\.\-[:alnum:]_]+$/',
+		],
+	];
+
+	public static $rulesCreateItem = [
+		'id' => [
 			'required',
 			'regex:/^[\.\-[:alnum:]_]+$/',
 		],
