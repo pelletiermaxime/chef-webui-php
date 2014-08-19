@@ -9,6 +9,7 @@ Feature: Create databags items with custom fields
     Then I should see 2 ".add_field" element
     Then I should see 1 ".remove_field" element
 
+  @javascript
   Scenario: Add a new field
     When I press "Add field"
     Then I should see an ".item_name" element
@@ -16,6 +17,7 @@ Feature: Create databags items with custom fields
     Then I should see 3 ".add_field" element
     Then I should see 2 ".remove_field" element
 
+  @javascript
   Scenario: Add another new field and check the IDs and if it's empty
     When I fill in "item_name_1" with "Field name"
     And I fill in "item_value_1" with "Field value"
@@ -23,11 +25,13 @@ Feature: Create databags items with custom fields
     Then the "item_name_2" field should contain ""
     And the "item_value_2" field should contain ""
 
+  @javascript
   Scenario: Delete the empty field
     When I press "remove_field_2"
     Then I should see 3 ".add_field" element
     Then I should see 2 ".remove_field" element
 
+  @javascript
   Scenario:
     When I press "Save"
       Then I should be on "/databags/create/test-databag-1"

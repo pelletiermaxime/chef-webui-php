@@ -27,3 +27,11 @@ default:
     gherkin:
         filters:
             # tags: "~@wip"
+travisci:
+    extensions:
+        Behat\MinkExtension:
+            goutte: ~
+            base_url: http://localhost:8000
+    gherkin:
+        filters:
+            tags: ~@wip&&~@javascript
