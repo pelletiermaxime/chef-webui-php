@@ -1,0 +1,16 @@
+language: php
+php:
+  - 5.5
+  - hhvm
+
+before_install:
+  - hhvm composer install
+
+before_script:
+  - php artisan serve
+
+services:
+  - redis-server
+
+script:
+  - vendor/bin/phpunit
