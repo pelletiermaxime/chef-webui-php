@@ -12,7 +12,7 @@ before_install:
   - sleep 3 # give xvfb some time to start
 
 before_script:
-  - /usr/bin/php artisan serve &
+  - php artisan serve &
   - bundle exec chef-zero -d
   - sleep 3
 
