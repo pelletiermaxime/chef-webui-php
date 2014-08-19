@@ -4,7 +4,7 @@ php:
   - hhvm
 
 before_install:
-  - hhvm composer install
+  - composer install
 
 before_script:
   - php artisan serve
