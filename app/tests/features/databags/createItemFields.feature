@@ -23,7 +23,14 @@ Feature: Create databags items with custom fields
     Then the "item_name_2" field should contain ""
     And the "item_value_2" field should contain ""
 
-  Scenario: Delete the first field
-    When I press "remove_field_1"
+  Scenario: Delete the empty field
+    When I press "remove_field_2"
     Then I should see 3 ".add_field" element
     Then I should see 2 ".remove_field" element
+
+  Scenario:
+    When I press "Save"
+      Then I should be on "/databags/create/test-databag-1"
+      And I should see "The id field is required."
+      And the "item_name_1" field should contain "Field name"
+      And the "item_value_1" field should contain "Field value"
