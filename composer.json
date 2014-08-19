@@ -11,6 +11,11 @@
 		,"way/generators": "dev-master"
 	},
 	"require-dev": {
+		"behat/behat": "3.*"
+		,"behat/mink": "~1.5"
+		,"behat/mink-extension": "~2.0"
+		,"behat/mink-goutte-driver": "~1.0"
+		,"behat/mink-selenium2-driver":  "~1.1"
 	},
 	"autoload": {
 		"classmap": [
