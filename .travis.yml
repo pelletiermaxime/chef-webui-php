@@ -5,6 +5,7 @@ php:
 
 before_install:
   - composer install
+  - bundle install
 
 before_script:
   - php artisan serve &
