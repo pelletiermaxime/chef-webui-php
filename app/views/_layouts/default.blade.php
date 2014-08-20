@@ -4,6 +4,9 @@
         <title>@yield('title')</title>
         <!-- Bootstrap -->
         <link href="{{ asset("assets/css/slate-bootstrap.min.css") }}" rel="stylesheet">
+        <script>
+            var fieldNumber = 0
+        </script>
     </head>
     <body>
         <div class="container-fluid">

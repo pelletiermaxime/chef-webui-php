@@ -21,9 +21,16 @@ default:
                 browser: chrome
             # zombie: ~
             # sahi: ~
-            # base_url: http://localhost:8000
             base_url: http://127.0.0.1/
             show_cmd: firefox %s
     gherkin:
         filters:
             # tags: "~@wip"
+travisci:
+    extensions:
+        Behat\MinkExtension:
+            goutte: ~
+            base_url: http://localhost:8000
+    gherkin:
+        filters:
+            tags: ~@wip&&~@javascript

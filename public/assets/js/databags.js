@@ -1,4 +1,3 @@
-var fieldNumber = 0
 $('.add_field').click(function(event) {
 	$parentDiv = $(this).parent();
 	$fieldTemplate = $('.add_field_template');
