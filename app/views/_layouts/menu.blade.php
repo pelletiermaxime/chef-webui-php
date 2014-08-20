@@ -1,6 +1,7 @@
 <?php
 $menus = [
     'Databags'      => route('databags.index'),
+    'Nodes'         => route('nodes.index'),
 ];
 if (Auth::check()) {
     $menus['Se déconnecter'] = route('login.logout');

@@ -13,7 +13,6 @@
 
 Route::get('/', 'HomeController@index');
 
-// Route::resource('databags', 'DatabagsController');
 Route::group(['prefix' => 'databags', /*'before' => 'auth'*/], function () {
         Route::get('/', [
         'as'   => 'databags.index',
@@ -48,5 +47,27 @@ Route::group(['prefix' => 'databags', /*'before' => 'auth'*/], function () {
     Route::get('/destroyItem/{databags}/{id}', [
         'as'   => 'databags.destroyItem',
         'uses' => 'DatabagsController@destroyItem',
+    ]);
+});
+
+Route::group(['prefix' => 'nodes', /*'before' => 'auth'*/], function () {
+    Route::get('/', [
+        'as'   => 'nodes.index',
+        'uses' => 'NodesController@index',
+    ]);
+
+    Route::get('/{node}', [
+        'as'   => 'nodes.show',
+        'uses' => 'NodesController@show',
+    ]);
+
+    Route::get('/destroy/{id}', [
+        'as'   => 'nodes.destroy',
+        'uses' => 'NodesController@destroy',
+    ]);
+
+    Route::get('/{node}/edit', [
+        'as'   => 'nodes.edit',
+        'uses' => 'NodesController@edit',
     ]);
 });
