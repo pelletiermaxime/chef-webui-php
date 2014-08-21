@@ -20,4 +20,13 @@ class NodesController extends BaseController
             ->withNodes($nodes)
             ;
     }
+
+    public function show($node)
+    {
+        $node = Chef::get("/nodes/$node");
+        Debugbar::log($node);
+        return View::make('nodes/show')
+            ->withNode($node)
+            ;
+    }
 }
