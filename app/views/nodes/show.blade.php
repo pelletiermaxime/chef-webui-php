@@ -24,15 +24,10 @@ Environment: {{ $node->chef_environment }}
         </h3>
     </div>
     <div id="collapse-override" class="panel-collapse collapse in">
-        <div class="panel-body">
-            @foreach ($node->override as $index => $value)
-            <div>
-                <a data-toggle="collapse" href="#collapse-override_{{ $index }}">{{ $index }}</a>
-            </div>
-            <div id="collapse-override_{{ $index }}" class="collapse">
-                <?php var_dump($value) ?>
-            </div>
-            @endforeach
+        <div class="panel-body" id="nodeOverride">
+            <ul>
+            @include('nodes.showItem', array('values' => $node->override))
+            </ul>
         </div>
     </div>
 </div>
@@ -46,15 +41,10 @@ Environment: {{ $node->chef_environment }}
         </h3>
     </div>
     <div id="collapse-default" class="panel-collapse collapse in">
-        <div class="panel-body">
-            @foreach ($node->default as $index => $value)
-            <div>
-                <a data-toggle="collapse" href="#collapse-{{ $index }}">{{ $index }}</a>
-            </div>
-            <div id="collapse-{{ $index }}" class="collapse">
-                <?php var_dump($value) ?>
-            </div>
-            @endforeach
+        <div class="panel-body" id="nodeDefault">
+            <ul>
+            @include('nodes.showItem', array('values' => $node->default))
+            </ul>
         </div>
     </div>
 </div>
@@ -68,15 +58,10 @@ Environment: {{ $node->chef_environment }}
         </h3>
     </div>
     <div id="collapse-default" class="panel-collapse collapse in">
-        <div class="panel-body">
-            @foreach ($node->automatic as $index => $value)
-            <div>
-                <a data-toggle="collapse" href="#collapse-{{ $index }}">{{ $index }}</a>
-            </div>
-            <div id="collapse-{{ $index }}" class="collapse">
-                <?php var_dump($value) ?>
-            </div>
-            @endforeach
+        <div class="panel-body" id="nodeAutomatic">
+            <ul>
+            @include('nodes.showItem', array('values' => $node->automatic))
+            </ul>
         </div>
     </div>
 </div>
@@ -90,15 +75,10 @@ Environment: {{ $node->chef_environment }}
         </h3>
     </div>
     <div id="collapse-default" class="panel-collapse collapse in">
-        <div class="panel-body">
-            @foreach ($node->normal as $index => $value)
-            <div>
-                <a data-toggle="collapse" href="#collapse-{{ $index }}">{{ $index }}</a>
-            </div>
-            <div id="collapse-{{ $index }}" class="collapse">
-                <?php var_dump($value) ?>
-            </div>
-            @endforeach
+        <div class="panel-body" id="nodeNormal">
+            <ul>
+            @include('nodes.showItem', array('values' => $node->normal))
+            </ul>
         </div>
     </div>
 </div>

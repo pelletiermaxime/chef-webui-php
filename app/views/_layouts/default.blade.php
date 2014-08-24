@@ -4,6 +4,7 @@
         <title>@yield('title')</title>
         <!-- Bootstrap -->
         <link href="{{ asset("assets/css/slate-bootstrap.min.css") }}" rel="stylesheet">
+        <link href="{{ asset("assets/js/tree/themes/default/style.min.css") }}" rel="stylesheet" />
         <script>
             var fieldNumber = 0
         </script>
@@ -23,6 +24,13 @@
         <script src="{{ asset("assets/js/jquery-2.1.1.min.js") }}"></script>
         <script src="{{ asset("assets/js/bootstrap.min.js") }}"></script>
         <script src="{{ asset("assets/js/databags.js") }}"></script>
+        <script src="{{ asset("assets/js/tree/jstree.min.js") }}"></script>
+        <script>
+        $(function () { $('#nodeOverride').jstree(); });
+        $(function () { $('#nodeDefault').jstree(); });
+        $(function () { $('#nodeAutomatic').jstree(); });
+        $(function () { $('#nodeNormal').jstree(); });
+        </script>
         @yield('script')
     </body>
 </html>
