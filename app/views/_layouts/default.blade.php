@@ -26,10 +26,7 @@
         <script src="{{ asset("assets/js/databags.js") }}"></script>
         <script src="{{ asset("assets/js/tree/jstree.min.js") }}"></script>
         <script>
-        $(function () { $('#nodeOverride').jstree(); });
-        $(function () { $('#nodeDefault').jstree(); });
-        $(function () { $('#nodeAutomatic').jstree(); });
-        $(function () { $('#nodeNormal').jstree(); });
+        $(function () { $('.jstree').jstree(); });
         </script>
         @yield('script')
     </body>

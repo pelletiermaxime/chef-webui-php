@@ -24,7 +24,7 @@ Environment: {{ $node->chef_environment }}
         </h3>
     </div>
     <div id="collapse-override" class="panel-collapse collapse in">
-        <div class="panel-body" id="nodeOverride">
+        <div class="panel-body jstree">
             <ul>
             @include('nodes.showItem', array('values' => $node->override))
             </ul>
@@ -41,7 +41,7 @@ Environment: {{ $node->chef_environment }}
         </h3>
     </div>
     <div id="collapse-default" class="panel-collapse collapse in">
-        <div class="panel-body" id="nodeDefault">
+        <div class="panel-body jstree">
             <ul>
             @include('nodes.showItem', array('values' => $node->default))
             </ul>
@@ -58,7 +58,7 @@ Environment: {{ $node->chef_environment }}
         </h3>
     </div>
     <div id="collapse-default" class="panel-collapse collapse in">
-        <div class="panel-body" id="nodeAutomatic">
+        <div class="panel-body jstree">
             <ul>
             @include('nodes.showItem', array('values' => $node->automatic))
             </ul>
@@ -75,7 +75,7 @@ Environment: {{ $node->chef_environment }}
         </h3>
     </div>
     <div id="collapse-default" class="panel-collapse collapse in">
-        <div class="panel-body" id="nodeNormal">
+        <div class="panel-body jstree">
             <ul>
             @include('nodes.showItem', array('values' => $node->normal))
             </ul>
