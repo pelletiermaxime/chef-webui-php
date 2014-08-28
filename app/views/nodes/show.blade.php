@@ -26,7 +26,7 @@ Environment: {{ $node->chef_environment }}
     <div id="collapse-override" class="panel-collapse collapse in">
         <div class="panel-body jstree">
             <ul>
-            @include('nodes.showItem', array('values' => $node->override))
+            @include('nodes.showItem', ['values' => (array)$node->override, 'edit' => true])
             </ul>
         </div>
     </div>
@@ -43,24 +43,7 @@ Environment: {{ $node->chef_environment }}
     <div id="collapse-default" class="panel-collapse collapse in">
         <div class="panel-body jstree">
             <ul>
-            @include('nodes.showItem', array('values' => $node->default))
-            </ul>
-        </div>
-    </div>
-</div>
-
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        <h3 class="panel-title">
-            <a href="#collapse-default" data-toggle="collapse">
-                <b>Automatic:</b>
-            </a>
-        </h3>
-    </div>
-    <div id="collapse-default" class="panel-collapse collapse in">
-        <div class="panel-body jstree">
-            <ul>
-            @include('nodes.showItem', array('values' => $node->automatic))
+            @include('nodes.showItem', ['values' => (array)$node->default, 'edit' => true])
             </ul>
         </div>
     </div>
@@ -77,7 +60,24 @@ Environment: {{ $node->chef_environment }}
     <div id="collapse-default" class="panel-collapse collapse in">
         <div class="panel-body jstree">
             <ul>
-            @include('nodes.showItem', array('values' => $node->normal))
+            @include('nodes.showItem', ['values' => (array)$node->normal, 'edit' => true])
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <a href="#collapse-default" data-toggle="collapse">
+                <b>Automatic:</b>
+            </a>
+        </h3>
+    </div>
+    <div id="collapse-default" class="panel-collapse collapse in">
+        <div class="panel-body jstree">
+            <ul>
+            @include('nodes.showItem', ['values' => (array)$node->automatic])
             </ul>
         </div>
     </div>

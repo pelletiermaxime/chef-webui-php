@@ -1,11 +1,20 @@
+<?php ksort($values) ?>
 @foreach ($values as $index => $value)
-    <li><?php echo($index)?>
+    <li>{{ $index }}
     @if (is_object($value) || is_array($value))
         <ul>
-        @include('nodes.showItem', array('values' => $value))
+        @include('nodes.showItem', ['values' => (array)$value, 'parent' => $index])
         </ul>
     @else
-        : {{ $value }}
+        :
+        @if (!empty($edit))
+            <?php
+            $name = "{$parent}_{$index}";
+            ?>
+            {{ Form::text($name, $value, []) }}
+        @else
+            {{ $value }}
+        @endif
     @endif
     </li>
 @endforeach
