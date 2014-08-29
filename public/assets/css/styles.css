@@ -1,0 +1,11 @@
+.jstree-leaf {
+	min-height: 30px !important;
+}
+
+.jstree-clicked {
+	background-color: black !important;
+}
+
+.jstree-hovered {
+	background-color: #7a8288 !important;
+}

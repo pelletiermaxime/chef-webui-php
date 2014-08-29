@@ -5,6 +5,7 @@
         <!-- Bootstrap -->
         <link href="{{ asset("assets/css/slate-bootstrap.min.css") }}" rel="stylesheet">
         <link href="{{ asset("assets/js/tree/themes/default/style.min.css") }}" rel="stylesheet" />
+        <link href="{{ asset("assets/css/styles.css") }}" rel="stylesheet" />
         <script>
             var fieldNumber = 0
         </script>
