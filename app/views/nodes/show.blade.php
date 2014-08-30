@@ -15,13 +15,17 @@ Environment: {{ $node->chef_environment }}
 
 <h3>Attributes</h3>
 
+{{ Form::open(['route' => ['nodes.edit', $node->name]]) }}
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h3 class="panel-title">
+        <div class="panel-title">
             <a href="#collapse-override" data-toggle="collapse">
                 <b>Override:</b>
             </a>
-        </h3>
+            <button type="submit" class="btn btn-primary navbar-right" style="position: relative;top: -8px;">
+                Save
+            </button>
+        </div>
     </div>
     <div id="collapse-override" class="panel-collapse collapse in">
         <div class="panel-body jstree">
@@ -65,7 +69,7 @@ Environment: {{ $node->chef_environment }}
         </div>
     </div>
 </div>
-
+{{ Form::close() }}
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h3 class="panel-title">

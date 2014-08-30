@@ -1,7 +1,7 @@
 @extends('_layouts.default')
 
 @section('main')
-{{ Form::open(array('route' => 'databags.store')) }}
+{{ Form::open(['route' => 'databags.store']) }}
 
 {{ Form::hidden('databag_item', $item) }}
 
