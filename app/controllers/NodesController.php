@@ -35,4 +35,9 @@ class NodesController extends BaseController
             ->withNode($node)
             ;
     }
+    
+    public function create()
+    {
+        return View::make('nodes/create');
+    }
 }

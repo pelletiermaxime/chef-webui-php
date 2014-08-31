@@ -2,9 +2,9 @@
 
 @section('main')
 
-<!-- <a href="{{ route('databags.create') }}">
+<a href="{{ route('nodes.create') }}">
 <button type="submit" class="btn btn-primary btn-lg">Create</button>
-</a> -->
+</a>
 
 <table class="table">
 <thead>

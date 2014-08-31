@@ -70,4 +70,10 @@ Route::group(['prefix' => 'nodes', /*'before' => 'auth'*/], function () {
         'as'   => 'nodes.edit',
         'uses' => 'NodesController@edit',
     ]);
+    
+    Route::get('/create', [
+        'as'   => 'nodes.create',
+        'uses' => 'NodesController@create',
+    ]);
+
 });
