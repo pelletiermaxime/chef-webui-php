@@ -15,7 +15,10 @@ Environment: {{ $node->chef_environment }}
 
 <h3>Attributes</h3>
 
-{{ Form::open(['route' => ['nodes.edit', $node->name]]) }}
+{{ Form::open(['route' => ['nodes.store']]) }}
+
+{{ Form::hidden('node_name', $node->name) }}
+
 <div class="panel panel-primary">
     <div class="panel-heading">
         <div class="panel-title">

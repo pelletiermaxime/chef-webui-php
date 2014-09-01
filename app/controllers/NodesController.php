@@ -9,6 +9,9 @@ class NodesController extends BaseController
             60, //60 minutes
             function () {
                 $nodes = Chef::get('/nodes');
+                if (empty($nodes)) {
+                    return [];
+                }
                 $nodes = (array) $nodes;
                 ksort($nodes);
                 return $nodes;
@@ -35,9 +38,37 @@ class NodesController extends BaseController
             ->withNode($node)
             ;
     }
-    
+
+
     public function create()
     {
         return View::make('nodes/create');
+    }
+
+    public function store()
+    {
+        $input = (object) Input::all();
+        $attributes = (object) Input::except(['node_name', '_token']);
+
+        $node = Chef::get("/nodes/{$input->node_name}");
+
+        $attributes = json_decode(json_encode($attributes), FALSE);
+
+        var_dump($attributes);
+        // die;
+
+        // $node->override->nsca->encryption_method = "2";
+        // $node->override = $attributes;
+        $node->normal = $attributes;
+        // $node->attributes->nsca->encryption_method = "2";
+
+        var_dump($node);
+
+        Chef::put("/nodes/{$input->node_name}", $node);
+
+        Cache::forget("node-{$input->node_name}");
+
+        $successMessage = "Node saved.";
+        // return Redirect::route($redirect)->withSuccess($successMessage);
     }
 }

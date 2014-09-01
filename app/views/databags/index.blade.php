@@ -8,14 +8,16 @@
 
 <table class="table">
 <thead>
+@if (count($databags))
 <tr>
     <th>Id</th>
     <th>&nbsp;</th>
     <th>&nbsp;</th>
 </tr>
+@endif
 </thead>
 <tbody>
-@foreach ($databags as $id => $url)
+@forelse ($databags as $id => $url)
 <tr>
     <td>
         @if ($data_item === '')
@@ -39,7 +41,11 @@
         @endif
     </td>
 </tr>
-@endforeach
+@empty
+<tr>
+    <td>No databags</td>
+</tr>
+@endforelse
 </tbody>
 </table>
 

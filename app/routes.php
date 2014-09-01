@@ -56,6 +56,11 @@ Route::group(['prefix' => 'nodes', /*'before' => 'auth'*/], function () {
         'uses' => 'NodesController@index',
     ]);
 
+    Route::get('/create', [
+        'as'   => 'nodes.create',
+        'uses' => 'NodesController@create',
+    ]);
+
     Route::get('/{node}', [
         'as'   => 'nodes.show',
         'uses' => 'NodesController@show',
@@ -70,10 +75,9 @@ Route::group(['prefix' => 'nodes', /*'before' => 'auth'*/], function () {
         'as'   => 'nodes.edit',
         'uses' => 'NodesController@edit',
     ]);
-    
-    Route::get('/create', [
-        'as'   => 'nodes.create',
-        'uses' => 'NodesController@create',
-    ]);
 
+    Route::post('/', [
+        'as'   => 'nodes.store',
+        'uses' => 'NodesController@store',
+    ]);
 });

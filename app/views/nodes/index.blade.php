@@ -8,14 +8,16 @@
 
 <table class="table">
 <thead>
+@if (count($nodes))
 <tr>
     <th>Id</th>
     <th>&nbsp;</th>
     <th>&nbsp;</th>
 </tr>
+@endif
 </thead>
 <tbody>
-@foreach ($nodes as $name => $url)
+@forelse ($nodes as $name => $url)
 <tr>
     <td>
         <a href="{{ route('nodes.show', $name) }}">{{ $name }}</a>
@@ -27,7 +29,11 @@
         <a href="{{ route('nodes.destroy', $name) }}">Delete</a>
     </td>
 </tr>
-@endforeach
+@empty
+<tr>
+    <td>No nodes</td>
+</tr>
+@endforelse
 </tbody>
 </table>
 

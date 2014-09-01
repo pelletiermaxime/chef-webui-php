@@ -15,6 +15,9 @@ class DatabagsController extends BaseController
             60, //60 minutes
             function () use($url) {
                 $databags = Chef::get($url);
+                if (empty($databags)) {
+                    return [];
+                }
                 $databags = (array) $databags;
                 ksort($databags);
                 return $databags;
