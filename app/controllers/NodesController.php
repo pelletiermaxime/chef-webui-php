@@ -71,4 +71,19 @@ class NodesController extends BaseController
         $successMessage = "Node saved.";
         // return Redirect::route($redirect)->withSuccess($successMessage);
     }
+
+    public function storeCreate()
+    {
+        $input = Input::except(['_token']);
+        $node_name = $input['name'];
+
+        $input = (object) $input;
+
+        Chef::post('/nodes', $input);
+
+        Cache::forget('nodes');
+
+        $successMessage = "Node $node_name created.";
+        return Redirect::route('nodes.index')->withSuccess($successMessage);
+    }
 }

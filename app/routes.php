@@ -76,8 +76,13 @@ Route::group(['prefix' => 'nodes', /*'before' => 'auth'*/], function () {
         'uses' => 'NodesController@edit',
     ]);
 
-    Route::post('/', [
+    Route::post('/edit', [
         'as'   => 'nodes.store',
         'uses' => 'NodesController@store',
+    ]);
+
+    Route::post('/', [
+        'as'   => 'nodes.storeCreate',
+        'uses' => 'NodesController@storeCreate',
     ]);
 });
