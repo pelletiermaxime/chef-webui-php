@@ -13,7 +13,7 @@
     <button type="button" class="btn btn-default add_field">Add field</button>
 </div>
 
-@if (isset(Input::old('item_name')))
+@if (count(Input::old('item_name')))
     @foreach (Input::old('item_name') as $fieldNo => $item_name)
     <script>fieldNumber++;</script>
     <div class="form-group">
