@@ -12,8 +12,8 @@
 */
 
 return array(
-    'server'    => 'http://chefserver.com/',
+    'server'    => 'http://127.0.0.1:8889/',
     'client'    => 'clientname',
-    'key'       => 'absolute/path/to/key.pem',
+    'key'       => app_path() . '/tests/key.pem',
     'version'   => '0.11.x',
 );
