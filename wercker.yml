@@ -1,0 +1,22 @@
+box: wercker/php
+build:
+  steps:
+    -  script:
+        name: install dependencies
+        code: |-
+          sudo apt-get update
+          sudo apt-get install ruby-bundler -y
+          sudo apt-get install rubygems -y
+          sudo bundle install
+          composer install --no-interaction --prefer-source
+    -  script:
+        name: run unit tests
+        code: phpunit
+    -  script:
+        name: start server
+        code: |-
+          php artisan serve &
+          bundle exec chef-zero -d
+    -  script:
+        name: run behat tests
+        code: ./vendor/bin/behat -p travisci
