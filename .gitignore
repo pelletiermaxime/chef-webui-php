@@ -8,6 +8,7 @@ composer.lock
 Thumbs.db
 app/storage/debugbar/
 public/packages/barryvdh
+public/packages/maximebf/php-debugbar
 
 *.sqlite
 _ide_helper.php

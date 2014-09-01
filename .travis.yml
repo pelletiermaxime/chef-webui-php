@@ -19,5 +19,5 @@ services:
   - redis-server
 
 script:
-  # - ./vendor/bin/behat -p travisci
-  - phpunit
+  - ./vendor/bin/behat -p travisci
+  - ./vendor/bin/phpunit
