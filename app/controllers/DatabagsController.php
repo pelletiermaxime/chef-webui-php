@@ -93,12 +93,13 @@ class DatabagsController extends BaseController
         try {
             Chef::post($url, $item_value);
         } catch (Exception $e) {
-            return Redirect::back()->withErrors($e->getMessage())->withInput();
+            $errorMsg = "Error creating databag: " . $e->getMessage();
+            return Redirect::back()->withErrors($errorMsg)->withInput();
         }
 
         Cache::forget($url);
 
-        $successMessage = "Databag $databag_name created.";
+        $successMessage = "Databag <b>$databag_name</b> created.";
         return Redirect::route('databags.index')->withSuccess($successMessage);
     }
 
@@ -121,7 +122,7 @@ class DatabagsController extends BaseController
 
         Cache::forget($url);
 
-        $successMessage = "Databag item $databag_name created.";
+        $successMessage = "Databag item <b>$databag_name</b> created.";
         return Redirect::route('databags.show', $item_value->databag_item)->withSuccess($successMessage);
     }
 
@@ -130,7 +131,7 @@ class DatabagsController extends BaseController
         $url = "/data/$id";
         Chef::delete($url);
         Cache::forget('/data');
-        return Redirect::route('databags.index')->withSuccess("Databag $id deleted.");
+        return Redirect::route('databags.index')->withSuccess("Databag <b>$id</b> deleted.");
     }
 
     public function destroyItem($item, $id)
@@ -138,6 +139,6 @@ class DatabagsController extends BaseController
         $url = "/data/$item/$id";
         Chef::delete($url);
         Cache::forget("/data/$item");
-        return Redirect::route('databags.show', $item)->withSuccess("Databag $id deleted.");
+        return Redirect::route('databags.show', $item)->withSuccess("Databag <b>$id</b> deleted.");
     }
 }
