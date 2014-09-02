@@ -92,4 +92,12 @@ class NodesController extends BaseController
         $successMessage = "Node $node_name created.";
         return Redirect::route('nodes.index')->withSuccess($successMessage);
     }
+
+    public function destroy($id)
+    {
+        $url = "/nodes/$id";
+        Chef::delete($url);
+        Cache::forget('nodes');
+        return Redirect::route('nodes.index')->withSuccess("Node <b>$id</b> deleted.");
+    }
 }
