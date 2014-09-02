@@ -118,7 +118,12 @@ class DatabagsController extends BaseController
         $databag_name = $item_value->id;
         $url = "/data/{$item_value->databag_item}";
 
-        Chef::post($url, $item_value);
+        try {
+            Chef::post($url, $item_value);
+        } catch (Exception $e) {
+            $errorMsg = "Error creating databag item: " . $e->getMessage();
+            return Redirect::back()->withErrors($errorMsg)->withInput();
+        }
 
         Cache::forget($url);
 

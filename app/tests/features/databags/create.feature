@@ -48,3 +48,13 @@ Feature: Create databags and databags items
       When I press "Save"
       Then I should be on "/databags/test-databag-1"
         And I should see "test-databag-item-1"
+
+    Scenario: Create duplicate databag item "test-databag-item-1"
+      Given I am on homepage
+      When I follow "Databags"
+      When I follow "test-databag-1"
+      When I follow "Create"
+      When I fill in "id" with "test-databag-item-1"
+      When I press "Save"
+      Then I should be on "/databags/create/test-databag-1"
+        And I should see "Error creating databag item: Object already exists"
