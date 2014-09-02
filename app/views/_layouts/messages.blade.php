@@ -1,9 +1,7 @@
 @if (count($errors))
-<ul class="alert alert-danger">
     @foreach ($errors->all() as $message)
-        <li>{{$message}}</li>
+        <div class="alert alert-danger">{{$message}}</div>
     @endforeach
-</ul>
 @endif
 @if (Session::has('success'))
     <div class="alert alert-success">

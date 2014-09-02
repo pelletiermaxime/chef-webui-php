@@ -1,13 +1,6 @@
 default:
     formatters:
         pretty: true
-        # parameters:
-        #     decorated:              true
-        #     verbose:                false
-        #     time:                   true
-        #     language:               fr
-        #     output_path:            null
-        #     multiline_arguments:    true
     autoload:
         - %paths.base%/app/tests/features/bootstrap
     suites:

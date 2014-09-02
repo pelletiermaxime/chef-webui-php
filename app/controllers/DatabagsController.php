@@ -90,7 +90,11 @@ class DatabagsController extends BaseController
 
         $databag_name = $item_value->name;
 
-        Chef::post($url, $item_value);
+        try {
+            Chef::post($url, $item_value);
+        } catch (Exception $e) {
+            return Redirect::back()->withErrors($e->getMessage())->withInput();
+        }
 
         Cache::forget($url);
 
