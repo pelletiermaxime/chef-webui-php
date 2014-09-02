@@ -29,7 +29,7 @@ class NodesController extends BaseController
         $node = Cache::remember(
             "node-$node",
             60,
-            function() use($node) {
+            function () use ($node) {
                 return Chef::get("/nodes/$node");
             }
         );
@@ -76,6 +76,12 @@ class NodesController extends BaseController
     {
         $input = Input::except(['_token']);
         $node_name = $input['name'];
+
+        $validator = Validator::make($input, Nodes::$rulesCreate);
+
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
 
         $input = (object) $input;
 
