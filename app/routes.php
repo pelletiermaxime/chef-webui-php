@@ -86,3 +86,10 @@ Route::group(['prefix' => 'nodes', /*'before' => 'auth'*/], function () {
         'uses' => 'NodesController@storeCreate',
     ]);
 });
+
+Route::group(['prefix' => 'cookbooks', /*'before' => 'auth'*/], function () {
+    Route::get('/', [
+        'as'   => 'cookbooks.index',
+        'uses' => 'CookbooksController@index',
+    ]);
+});
