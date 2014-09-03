@@ -23,7 +23,7 @@
         <a href="{{ route('nodes.show', $name) }}">{{ $name }}</a>
     </td>
     <td>
-        <a href="{{ route('nodes.edit', $name) }}">Edit</a>
+        <a href="{{ route('nodes.show', $name) }}">Edit</a>
     </td>
     <td>
         <a href="{{ route('nodes.destroy', $name) }}">Delete</a>
