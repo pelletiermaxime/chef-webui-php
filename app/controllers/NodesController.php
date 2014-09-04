@@ -34,8 +34,12 @@ class NodesController extends BaseController
             }
         );
         Debugbar::log($node);
+
+        $cookbooks = Cookbooks::get();
+
         return View::make('nodes/show')
             ->withNode($node)
+            ->withAvailableCookbooks($cookbooks)
             ;
     }
 

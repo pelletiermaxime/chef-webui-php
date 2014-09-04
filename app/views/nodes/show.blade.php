@@ -7,6 +7,12 @@
 Environment: {{ $node->chef_environment }}
 
 <h3>Recipes</h3>
+<h4>Available recipes:</h4>
+@foreach ($available_cookbooks as $name => $cookbook)
+<div>
+    {{ $name }}
+</div>
+@endforeach
 @foreach ($node->run_list as $run_list)
 <div>
     {{ $run_list }}
