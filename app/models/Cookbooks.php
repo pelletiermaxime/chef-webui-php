@@ -19,4 +19,12 @@ class Cookbooks
         );
         return $cookbooks;
     }
+
+    public function create($name, $version)
+    {
+        $cookbook = new StdClass();
+        $cookbook->name = $name;
+        $cookbook->version = $version;
+        Chef::put("/cookbooks/$name/$version", $cookbook);
+    }
 }
