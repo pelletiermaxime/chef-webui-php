@@ -33,3 +33,4 @@ TODO
 * Support array fields
 * Editing of existing node attributes
 * Editing of node cookbooks
+* Roles
