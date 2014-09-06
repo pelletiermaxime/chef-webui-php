@@ -22,10 +22,16 @@
         </div>
         <!-- <script src="//code.jquery.com/jquery-2.1.1.min.js"></script> -->
         <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+        @if (App::environment('local'))
         <script src="{{ asset("assets/js/jquery-2.1.1.min.js") }}"></script>
-        <script src="{{ asset("assets/js/bootstrap.min.js") }}"></script>
-        <script src="{{ asset("assets/js/databags.js") }}"></script>
         <script src="{{ asset("assets/js/tree/jstree.min.js") }}"></script>
+        <script src="{{ asset("assets/js/bootstrap.min.js") }}"></script>
+         @else
+        <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jstree/3.0.3/jstree.min.js"></script>
+        @endif
+        <script src="{{ asset("assets/js/databags.js") }}"></script>
         <script>
         $(function () { $('.jstree').jstree(); });
         </script>
