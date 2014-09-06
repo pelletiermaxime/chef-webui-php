@@ -1,5 +1,25 @@
 @extends('_layouts.default')
 
+@section('script')
+
+<script>
+$(function() {
+    $('.jstree').jstree();
+    $(".available_recipe").draggable({
+        revert: "invalid",
+        helper: "clone",
+        cursor: "move"
+    });
+    $(".run_list, .available_recipes").droppable({
+        drop: function( event, ui ) {
+            ui.draggable.appendTo(this)
+        }
+    });
+});
+</script>
+
+@stop
+
 @section('main')
 
 <h2>{{ $node->name }}</h2>
@@ -8,16 +28,28 @@ Environment: {{ $node->chef_environment }}
 
 <h3>Recipes</h3>
 <h4>Available recipes:</h4>
-@foreach ($available_cookbooks as $name => $cookbook)
-<div>
-    {{ $name }}
+<div class="panel panel-primary">
+    <ul class="available_recipes">
+        @foreach ($available_cookbooks as $name => $cookbook)
+        <li class="available_recipe">
+            {{ $name }}
+        </li>
+        @endforeach
+    </ul>
 </div>
-@endforeach
-@foreach ($node->run_list as $run_list)
-<div>
-    {{ $run_list }}
+
+<br style="clear:both" />
+
+<h4>Run list:</h4>
+<div class="panel panel-primary">
+    <ul class="run_list">
+        @foreach ($node->run_list as $run_list)
+        <li class="available_recipe">
+            {{ $run_list }}
+        </li>
+        @endforeach
+    </ul>
 </div>
-@endforeach
 
 <h3>Attributes</h3>
 

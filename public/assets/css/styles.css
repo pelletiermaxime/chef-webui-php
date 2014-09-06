@@ -9,3 +9,25 @@
 .jstree-hovered {
 	background-color: #7a8288 !important;
 }
+
+.run_list, .available_recipes {
+	min-height: 100px;
+	list-style: none outside none;
+}
+
+.available_recipe {
+	background-color: #7a8288;
+	border: 1px solid black;
+	font-weight: bold;
+	padding: 10px;
+	text-align: center;
+	width: 120px;
+	float: left;
+	margin-right: 10px;
+	word-wrap: break-word;
+}
+
+.available_recipes {
+	list-style: none outside none;
+	padding: 0;
+}

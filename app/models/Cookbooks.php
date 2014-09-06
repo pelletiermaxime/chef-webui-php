@@ -26,5 +26,6 @@ class Cookbooks
         $cookbook->name = $name;
         $cookbook->version = $version;
         Chef::put("/cookbooks/$name/$version", $cookbook);
+        Cache::delete('cookbooks');
     }
 }
