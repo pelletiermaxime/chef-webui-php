@@ -2,7 +2,7 @@
 
 class Cookbooks
 {
-    public function get()
+    public static function get()
     {
         $cookbooks = Cache::remember(
             'cookbooks',
@@ -20,7 +20,7 @@ class Cookbooks
         return $cookbooks;
     }
 
-    public function create($name, $version)
+    public static function create($name, $version)
     {
         $cookbook = new StdClass();
         $cookbook->name = $name;
