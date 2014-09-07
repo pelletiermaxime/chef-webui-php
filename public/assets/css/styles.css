@@ -21,16 +21,18 @@
 	font-weight: bold;
 	padding: 6px;
 	text-align: center;
-	width: 118px;
+	width: 142px;
 	float: left;
-	margin-right: 4px;
-	margin-left: 4px;
+	margin-right: 3px;
+	margin-left: 3px;
 	word-wrap: break-word;
 }
 
 #panel-available-recipes {
 	width: 73%;
 	float: left;
+	overflow: auto;
+	height: 500px;
 }
 
 #panel-available-run-list {

@@ -43,9 +43,9 @@ Environment: {{ $node->chef_environment }}
 
 <div class="panel panel-primary" id="panel-available-recipes">
     <ul class="available_recipes">
-        @foreach ($available_cookbooks as $name => $cookbook)
+        @foreach ($available_cookbooks as $cookbook)
         <li class="available_recipe">
-            {{ $name }}
+            {{ $cookbook }}
         </li>
         @endforeach
     </ul>

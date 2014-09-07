@@ -35,7 +35,8 @@ class NodesController extends BaseController
         );
         Debugbar::log($node);
 
-        $cookbooks = Cookbooks::get();
+        $cookbooks = Cookbooks::getForEnvironment();
+        Debugbar::log($cookbooks);
 
         return View::make('nodes/show')
             ->withNode($node)

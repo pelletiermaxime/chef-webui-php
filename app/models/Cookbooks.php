@@ -20,6 +20,24 @@ class Cookbooks
         return $cookbooks;
     }
 
+    public static function getForEnvironment($env = '_default')
+    {
+        $cookbooks = Cache::remember(
+            "cookbooks_env_$env",
+            60, //60 minutes
+            function () use ($env) {
+                $cookbooks = Chef::get("environments/$env/recipes");
+                if (empty($cookbooks)) {
+                    return [];
+                }
+                $cookbooks = (array) $cookbooks;
+                sort($cookbooks);
+                return $cookbooks;
+            }
+        );
+        return $cookbooks;
+    }
+
     public static function create($name, $version)
     {
         $cookbook = new StdClass();
