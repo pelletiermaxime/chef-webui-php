@@ -28,6 +28,10 @@
 	word-wrap: break-word;
 }
 
+.run-list .available_recipe {
+	width: 123px;
+}
+
 #panel-available-recipes {
 	width: 73%;
 	float: left;
@@ -39,4 +43,5 @@
 	width: 26%;
 	float: right;
 	padding-bottom: 15px;
+	min-height: 100px;
 }
