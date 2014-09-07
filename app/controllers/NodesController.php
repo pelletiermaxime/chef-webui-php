@@ -26,14 +26,18 @@ class NodesController extends BaseController
 
     public function show($node)
     {
-        $node = Cache::remember(
-            "node-$node",
-            60,
-            function () use ($node) {
-                return Chef::get("/nodes/$node");
-            }
-        );
-        Debugbar::log($node);
+        try {
+            $node = Cache::remember(
+                "node-$node",
+                60,
+                function () use ($node) {
+                    return Chef::get("/nodes/$node");
+                }
+            );
+            Debugbar::log($node);
+        } catch (Exception $e) {
+            return Redirect::route('nodes.index');
+        }
 
         $cookbooks = Cookbooks::getForEnvironment();
         Debugbar::log($cookbooks);
