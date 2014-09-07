@@ -32,8 +32,8 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext
         $unitTesting = true;
         $testEnvironment = 'testing';
         require __DIR__.'/../../../../bootstrap/autoload.php';
-        require_once __DIR__.'/../../../../bootstrap/start.php';
-        // require app_path().'/models/Cookbooks.php';
+        $app = require_once __DIR__.'/../../../../bootstrap/start.php';
+        $app->boot();
     }
 
      /**
@@ -54,8 +54,6 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext
      */
     public function iCreateTheCookbookWithVersion($name, $version)
     {
-        throw new PendingException();
-        // $cookbook = new Cookbooks();
-        // $cookbook->create($name, $version);
+        Cookbooks::create($name, $version);
     }
 }
