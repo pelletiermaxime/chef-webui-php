@@ -86,7 +86,7 @@ Environment: {{ $node->chef_environment }}
 <h3>Attributes</h3>
 
 {{ Form::hidden('node_name', $node->name) }}
-{{ Form::hidden('run_list', null, ['id' => 'run_list']) }}
+{{ Form::hidden('run_list', implode(' ', $node->run_list['recipe']), ['id' => 'run_list']) }}
 
 <div class="panel panel-primary">
     <div class="panel-heading">
