@@ -40,10 +40,27 @@ class Cookbooks
 
     public static function create($name, $version)
     {
+        $recipe = new StdClass();
+        $recipe->name = 'default.rb';
+        $recipe->path = 'recipes/default.rb';
+
+        $metadata = new StdClass();
+        $metadata->name = $name;
+        $metadata->version = $version;
+        $metadata->description = $name;
+
         $cookbook = new StdClass();
-        $cookbook->name = $name;
-        $cookbook->version = $version;
+        $cookbook->name          = "$name-$version";
+        $cookbook->cookbook_name = $name;
+        $cookbook->version       = $version;
+        $cookbook->recipes       = [$recipe];
+        $cookbook->metadata      = $metadata;
+        $cookbook->chef_type     = 'cookbook_version';
+
+        Debugbar::log($cookbook);
+
         Chef::put("/cookbooks/$name/$version", $cookbook);
-        Cache::delete('cookbooks');
+        Cache::forget('cookbooks');
+        Cache::forget('cookbooks_env__default');
     }
 }
