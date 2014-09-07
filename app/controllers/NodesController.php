@@ -59,28 +59,29 @@ class NodesController extends BaseController
     public function store()
     {
         $input = (object) Input::all();
-        $attributes = (object) Input::except(['node_name', '_token']);
+        $attributes = (object) Input::except(['node_name', '_token', 'run_list']);
 
         $node = Chef::get("/nodes/{$input->node_name}");
 
-        $attributes = json_decode(json_encode($attributes), FALSE);
+        $attributes = json_decode(json_encode($attributes), false);
 
-        var_dump($attributes);
+        // var_dump($attributes);
         // die;
 
         // $node->override->nsca->encryption_method = "2";
         // $node->override = $attributes;
         $node->normal = $attributes;
+        $node->run_list = explode(' ', trim($input->run_list));
         // $node->attributes->nsca->encryption_method = "2";
 
-        var_dump($node);
+        // var_dump($node);
 
         Chef::put("/nodes/{$input->node_name}", $node);
 
         Cache::forget("node-{$input->node_name}");
 
         $successMessage = "Node saved.";
-        // return Redirect::route($redirect)->withSuccess($successMessage);
+        return Redirect::route('nodes.show', $input->node_name)->withSuccess($successMessage);
     }
 
     public function storeCreate()

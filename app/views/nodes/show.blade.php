@@ -13,14 +13,15 @@ $(function() {
     $("#panel-available-run-list").droppable({
         accept: ".available_recipes > li",
         drop: function( event, ui ) {
-            ui.draggable.appendTo($(this).children('ul'))
+            ui.draggable.appendTo($(this).children('ul'));
+            $('#run_list')[0].value += ' ' + ui.draggable.children('p').text();
         },
         tolerance: "touch"
     });
     $("#panel-available-recipes").droppable({
         accept: ".run-list > li",
         drop: function( event, ui ) {
-            ui.draggable.appendTo($(this).children('ul'))
+            ui.draggable.appendTo($(this).children('ul'));
         },
         tolerance: "touch"
     });
@@ -72,13 +73,20 @@ Environment: {{ $node->chef_environment }}
     </ul>
 </div>
 
+{{ Form::open(['route' => ['nodes.store']]) }}
+
+<div>
+<button type="submit" class="btn btn-primary" style="float: right;">
+    Save node
+</button>
+</div>
+
 <br style="clear:both" />
 
 <h3>Attributes</h3>
 
-{{ Form::open(['route' => ['nodes.store']]) }}
-
 {{ Form::hidden('node_name', $node->name) }}
+{{ Form::hidden('run_list', null, ['id' => 'run_list']) }}
 
 <div class="panel panel-primary">
     <div class="panel-heading">
