@@ -10,24 +10,31 @@
 	background-color: #7a8288 !important;
 }
 
-.run_list, .available_recipes {
-	min-height: 100px;
+.run-list, .available_recipes {
 	list-style: none outside none;
+	padding: 7px;
 }
 
 .available_recipe {
 	background-color: #7a8288;
 	border: 1px solid black;
 	font-weight: bold;
-	padding: 10px;
+	padding: 6px;
 	text-align: center;
-	width: 120px;
+	width: 118px;
 	float: left;
-	margin-right: 10px;
+	margin-right: 4px;
+	margin-left: 4px;
 	word-wrap: break-word;
 }
 
-.available_recipes {
-	list-style: none outside none;
-	padding: 0;
+#panel-available-recipes {
+	width: 73%;
+	float: left;
+}
+
+#panel-available-run-list {
+	width: 26%;
+	float: right;
+	padding-bottom: 15px;
 }

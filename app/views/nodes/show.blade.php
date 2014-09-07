@@ -10,10 +10,19 @@ $(function() {
         helper: "clone",
         cursor: "move"
     });
-    $(".run_list, .available_recipes").droppable({
+    $("#panel-available-run-list").droppable({
+        accept: ".available_recipes > li",
         drop: function( event, ui ) {
-            ui.draggable.appendTo(this)
-        }
+            ui.draggable.appendTo($(this).children('ul'))
+        },
+        tolerance: "touch"
+    });
+    $("#panel-available-recipes").droppable({
+        accept: ".run-list > li",
+        drop: function( event, ui ) {
+            ui.draggable.appendTo($(this).children('ul'))
+        },
+        tolerance: "touch"
     });
 });
 </script>
@@ -27,8 +36,12 @@ $(function() {
 Environment: {{ $node->chef_environment }}
 
 <h3>Recipes</h3>
-<h4>Available recipes:</h4>
-<div class="panel panel-primary">
+<h4 style="float:left">Available recipes:</h4>
+<h4 style="float:right">Run list:</h4>
+
+<br style="clear:both" />
+
+<div class="panel panel-primary" id="panel-available-recipes">
     <ul class="available_recipes">
         @foreach ($available_cookbooks as $name => $cookbook)
         <li class="available_recipe">
@@ -38,11 +51,9 @@ Environment: {{ $node->chef_environment }}
     </ul>
 </div>
 
-<br style="clear:both" />
 
-<h4>Run list:</h4>
-<div class="panel panel-primary">
-    <ul class="run_list">
+<div class="panel panel-primary" id="panel-available-run-list">
+    <ul class="run-list">
         @foreach ($node->run_list as $run_list)
         <li class="available_recipe">
             {{ $run_list }}
@@ -50,6 +61,8 @@ Environment: {{ $node->chef_environment }}
         @endforeach
     </ul>
 </div>
+
+<br style="clear:both" />
 
 <h3>Attributes</h3>
 

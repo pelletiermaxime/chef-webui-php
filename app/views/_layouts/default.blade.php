@@ -13,7 +13,7 @@
     <body>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-9 col-sm-offset-3 col-md-6 col-md-offset-3 main">
+                <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2 main">
                     @include('_layouts/menu')
                     @include('_layouts.messages')
                     @yield('main')
