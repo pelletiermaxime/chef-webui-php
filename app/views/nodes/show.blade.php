@@ -24,7 +24,13 @@ $(function() {
         },
         tolerance: "touch"
     });
-});
+
+    var options = {
+      valueNames: [ 'name' ]
+    };
+
+    var userList = new List('panel-available-recipes', options);
+    });
 </script>
 
 @stop
@@ -41,11 +47,15 @@ Environment: {{ $node->chef_environment }}
 
 <br style="clear:both" />
 
+
+<br style="clear:both" />
+
 <div class="panel panel-primary" id="panel-available-recipes">
-    <ul class="available_recipes">
+    <input class="search" placeholder="Search" />
+    <ul class="available_recipes list">
         @foreach ($available_cookbooks as $cookbook)
         <li class="available_recipe">
-            {{ $cookbook }}
+            <p class="name">{{ $cookbook }}</p>
         </li>
         @endforeach
     </ul>

@@ -39,8 +39,10 @@ class NodesController extends BaseController
             return Redirect::route('nodes.index');
         }
 
-        $cookbooks = Cookbooks::getForEnvironment();
+        $cookbooks = Cookbooks::getForEnvironment($node->chef_environment);
         Debugbar::log($cookbooks);
+        Debugbar::log(Chef::get("environments/_default/recipes"));
+
 
         return View::make('nodes/show')
             ->withNode($node)
