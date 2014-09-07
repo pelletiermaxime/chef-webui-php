@@ -65,9 +65,9 @@ Environment: {{ $node->chef_environment }}
 
 <div class="panel panel-primary" id="panel-available-run-list">
     <ul class="run-list">
-        @foreach ($node->run_list as $run_list)
+        @foreach ($node->run_list['recipe'] as $cookbook)
         <li class="available_recipe">
-            {{ $run_list }}
+            {{ $cookbook }}
         </li>
         @endforeach
     </ul>

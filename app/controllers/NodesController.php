@@ -24,14 +24,16 @@ class NodesController extends BaseController
             ;
     }
 
-    public function show($node)
+    public function show($node_name)
     {
         try {
             $node = Cache::remember(
-                "node-$node",
+                "node-$node_name",
                 60,
-                function () use ($node) {
-                    return Chef::get("/nodes/$node");
+                function () use ($node_name) {
+                    $node = Chef::get("/nodes/$node_name");
+                    $node->run_list = $this->clean_run_list($node->run_list);
+                    return $node;
                 }
             );
             Debugbar::log($node);
@@ -109,5 +111,16 @@ class NodesController extends BaseController
         Chef::delete($url);
         Cache::forget('nodes');
         return Redirect::route('nodes.index')->withSuccess("Node <b>$id</b> deleted.");
+    }
+
+    private function clean_run_list($run_list)
+    {
+        $expanded_run_list = [];
+        foreach ($run_list as $r) {
+            $r = rtrim($r, ']');
+            list($type, $name) = explode('[', $r);
+            $expanded_run_list[$type][] = $name;
+        }
+        return $expanded_run_list;
     }
 }
