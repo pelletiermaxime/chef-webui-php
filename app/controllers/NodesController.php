@@ -115,7 +115,8 @@ class NodesController extends BaseController
 
     private function clean_run_list($run_list)
     {
-        $expanded_run_list = [];
+        $expanded_run_list['recipe'] = [];
+        $expanded_run_list['role'] = [];
         foreach ($run_list as $r) {
             $r = rtrim($r, ']');
             list($type, $name) = explode('[', $r);
