@@ -15,10 +15,10 @@ $('.add_field').click(function(event) {
 		.prev('label').attr('for', newValueID);
 
 	newAddFieldID = 'add_field_' + (fieldNumber + 1);
-	$newField.find('.add_field').attr('id', newAddFieldID)
+	$newField.find('.add_field').attr('id', newAddFieldID);
 
 	newRemoveFieldID = 'remove_field_' + (fieldNumber + 1);
-	$newField.find('.remove_field').attr('id', newRemoveFieldID)
+	$newField.find('.remove_field').attr('id', newRemoveFieldID);
 
 	fieldNumber++;
 
@@ -26,7 +26,7 @@ $('.add_field').click(function(event) {
 	$newField.removeClass('hidden add_field_template');
 
 	//Add it after the field containing the pressed "Add Field"
-	$parentDiv.after($newField)
+	$parentDiv.after($newField);
 });
 
 $('.remove_field').click(function(event) {
