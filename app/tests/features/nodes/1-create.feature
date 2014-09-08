@@ -1,7 +1,6 @@
 Feature: Create node
     I should be able to create a node with only their name
 
-    @wip
     @nodes
     Scenario: Create invalid node "test node 1"
       Given I am on homepage
