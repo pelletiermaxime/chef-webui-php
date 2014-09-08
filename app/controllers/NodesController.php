@@ -71,10 +71,11 @@ class NodesController extends BaseController
         // $node->override->nsca->encryption_method = "2";
         // $node->override = $attributes;
         $node->normal = $attributes;
-        $node->run_list = explode(' ', trim($input->run_list));
-        // $node->attributes->nsca->encryption_method = "2";
-
-        // var_dump($node);
+        if (empty($input->run_list)) {
+            unset($node->run_list);
+        } else {
+            $node->run_list = explode(' ', trim($input->run_list));
+        }
 
         Chef::put("/nodes/{$input->node_name}", $node);
 
