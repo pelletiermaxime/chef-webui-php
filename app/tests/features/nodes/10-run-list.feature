@@ -11,3 +11,4 @@ Feature: Runlist management for nodes
       When I press "Save node"
       Then I should be on "/nodes/test-node-1"
         And I should see "Node saved."
+        And the ".run-list .available_recipe" element should contain "test-cookbook"
