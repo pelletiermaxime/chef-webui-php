@@ -63,7 +63,7 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext
     public function iDragIntoTheRunList($recipe)
     {
         $session = $this->getSession();
-        $page = $session->getPage();
+        // $page = $session->getPage();
         // $el1 = $page->find('xpath', "//p[text()='$recipe']/..");
         // $el1 = $page->find('xpath', "//p[text()='$recipe']")->getParent();
         // $el1 = $page->find('css', ".available_recipe");
@@ -74,5 +74,19 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext
         // $el1->dragTo($el2);
 
         $session->executeScript("$('#run_list').val('$recipe');");
+    }
+
+    /**
+     * @When I drag :recipe out of the run_list
+     */
+    public function iDragOutOfTheRunList($recipe)
+    {
+        $session = $this->getSession();
+        $session->executeScript("$('#run_list').val('');");
+        // $session = $this->getSession();
+        // $page = $session->getPage();
+        // $el1 = $page->find('xpath', "//p[text()='$recipe']")->getParent();
+        // $el2 = $page->findById('panel-available-recipes');
+        // $el1->dragTo($el2);
     }
 }

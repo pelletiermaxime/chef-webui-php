@@ -3,25 +3,34 @@
 @section('script')
 
 <script>
+function refreshRunList() {
+    var cookbooks = ''
+    $("#panel-available-run-list .run-list .available_recipe").each(function(index, el) {
+        cookbooks += ' ' + $(el).text();
+    });
+    $('#run_list').val(cookbooks);
+}
+
 $(function() {
     $('.jstree').jstree();
     $(".available_recipe").draggable({
         revert: "invalid",
         helper: "clone",
-        cursor: "move"
+        cursor: "move",
     });
     $("#panel-available-run-list").droppable({
         accept: ".available_recipes > li",
         drop: function( event, ui ) {
             ui.draggable.appendTo($(this).children('ul'));
-            $('#run_list')[0].value += ' ' + ui.draggable.children('p').text();
+            refreshRunList();
         },
         tolerance: "touch"
     });
     $("#panel-available-recipes").droppable({
-        accept: ".run-list > li",
+        // accept: ".run-list > li",
         drop: function( event, ui ) {
             ui.draggable.appendTo($(this).children('ul'));
+            setTimeout(refreshRunList, 100);
         },
         tolerance: "touch"
     });
