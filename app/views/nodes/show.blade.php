@@ -27,7 +27,7 @@ $(function() {
         tolerance: "touch"
     });
     $("#panel-available-recipes").droppable({
-        // accept: ".run-list > li",
+        accept: ".run-list > li",
         drop: function( event, ui ) {
             ui.draggable.appendTo($(this).children('ul'));
             setTimeout(refreshRunList, 100);
