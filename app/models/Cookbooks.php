@@ -8,7 +8,7 @@ class Cookbooks
             'cookbooks',
             60, //60 minutes
             function () {
-                $cookbooks = Chef::get('/cookbooks');
+                $cookbooks = Chef::get('/cookbooks?num_versions=all');
                 if (empty($cookbooks)) {
                     return [];
                 }

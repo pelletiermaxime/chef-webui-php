@@ -18,12 +18,14 @@
         {{ $name }}
     </td>
     <td>
-        {{ $cookbook->versions[0]->version }}
+        @foreach ((array) $cookbook->versions as $version)
+            {{ $version->version }}<br />
+        @endforeach
     </td>
 </tr>
 @empty
 <tr>
-    <td>No databags</td>
+    <td>No cookbooks</td>
 </tr>
 @endforelse
 </tbody>
