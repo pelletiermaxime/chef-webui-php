@@ -9,6 +9,9 @@
 		,"tyrola/xmpphp": "1.0.*@dev"
 		,"barryvdh/laravel-debugbar": "1.*"
 		,"way/generators": "dev-master"
+		,"vakata/jstree": "3.0.*"
+		,"components/bootstrap": "3.2.*"
+		,"javve/list.js": "1.1.*"
 	},
 	"require-dev": {
 		"behat/behat": "3.*"
@@ -42,7 +45,33 @@
 		]
 	},
 	"config": {
-		"preferred-install": "dist"
+		"preferred-install": "dist",
+		"component-dir": "public/components"
 	},
+	"repositories": [
+		{
+			"type": "package",
+			"package": {
+				"name": "javve/list.js",
+				"type": "component",
+				"version": "1.1.1",
+				"source": {
+					"url": "https://github.com/javve/list.js.git",
+					"type": "git",
+					"reference": "1.1.1"
+				},
+				"extra": {
+					"component": {
+						"scripts": [
+							"dist/list.min.js"
+						]
+					}
+				},
+				"require": {
+					"robloach/component-installer": "*"
+				}
+			}
+		}
+	],
 	"minimum-stability": "stable"
 }

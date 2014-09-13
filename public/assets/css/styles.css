@@ -19,7 +19,7 @@
 	background-color: #7a8288;
 	border: 1px solid black;
 	font-weight: bold;
-	padding: 6px;
+	padding: 4px;
 	text-align: center;
 	width: 19%;
 	float: left;
@@ -44,4 +44,8 @@
 	float: right;
 	padding-bottom: 15px;
 	min-height: 100px;
+}
+
+.attribute {
+	width: 350px;
 }

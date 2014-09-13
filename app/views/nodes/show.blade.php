@@ -12,7 +12,9 @@ function refreshRunList() {
 }
 
 $(function() {
-    $('.jstree').jstree();
+    $('.jstree').jstree({
+        "plugins" : ["wholerow"]
+    });
     $(".available_recipe").draggable({
         revert: "invalid",
         helper: "clone",

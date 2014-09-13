@@ -6,15 +6,14 @@
         $name = "{$parent}[{$index}]";
     }
     ?>
-    <li>{{ $index }}
+    <li><span class="attribute-name">{{ $index }}</span>
     @if (is_object($value) || is_array($value))
         <ul>
         @include('nodes.showItem', ['values' => (array)$value, 'parent' => $name])
         </ul>
     @else
-        :
         @if (!empty($edit))
-            {{ Form::text($name, $value, []) }}
+            {{ Form::text($name, $value, ['class' => 'attribute']) }}
         @else
             {{ $value }}
         @endif

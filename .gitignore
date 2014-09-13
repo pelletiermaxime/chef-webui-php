@@ -7,11 +7,10 @@ composer.lock
 .DS_Store
 Thumbs.db
 app/storage/debugbar/
-public/packages/barryvdh
-public/packages/maximebf/php-debugbar
 
 *.sqlite
 _ide_helper.php
 _ide_helper_models.php
 app/config/local/*
 app/config/packages/jenssegers/chef/local/config.php
+public/components/
