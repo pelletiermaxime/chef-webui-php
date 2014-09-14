@@ -18,6 +18,12 @@ Features
 * Nodes listing and attributes listing
 * Cookbooks listing
 
+Demo
+-----
+
+You can try my sample installation at http://chefwebui.pelletiermaxime.info/.
+My capistrano config is included as an example of a way to easily deploy it.
+
 Installation
 ------------
 

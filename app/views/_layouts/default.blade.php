@@ -29,6 +29,16 @@
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jstree/3.0.3/jstree.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js" />
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-49943403-3', 'auto');
+          ga('send', 'pageview');
+
+        </script>
         @endif
         <script src="{{ asset("assets/js/databags.js") }}"></script>
         <script src="{{ asset("assets/js/jquery-ui.min.js") }}"></script>
