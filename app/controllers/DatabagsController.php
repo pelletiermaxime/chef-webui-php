@@ -113,13 +113,19 @@ class DatabagsController extends BaseController
             return Redirect::back()->withErrors($validator)->withInput();
         }
 
-        $item_value = (object) $item_value;
+        $databag_name = $item_value['id'];
+        $databag_item_name = $item_value['databag_item'];
+        $url = "/data/$databag_item_name";
 
-        $databag_name = $item_value->id;
-        $url = "/data/{$item_value->databag_item}";
+        $databag_item = new StdClass();
+        $databag_item->id = $databag_name;
+        foreach ($item_value['item_name'] as $index => $field_name) {
+            $field_value = $item_value['item_value'][$index];
+            $databag_item->$field_name = $field_value;
+        }
 
         try {
-            Chef::post($url, $item_value);
+            Chef::post($url, $databag_item);
         } catch (Exception $e) {
             $errorMsg = "Error creating databag item: " . $e->getMessage();
             return Redirect::back()->withErrors($errorMsg)->withInput();
@@ -128,7 +134,7 @@ class DatabagsController extends BaseController
         Cache::forget($url);
 
         $successMessage = "Databag item <b>$databag_name</b> created.";
-        return Redirect::route('databags.show', $item_value->databag_item)->withSuccess($successMessage);
+        return Redirect::route('databags.show', $databag_item_name)->withSuccess($successMessage);
     }
 
     public function destroy($id)
