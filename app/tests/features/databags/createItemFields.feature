@@ -32,9 +32,15 @@ Feature: Create databags items with custom fields
     Then I should see 2 ".remove_field" element
 
   @javascript
-  Scenario:
+  Scenario: Save without mandatory ID field
     When I press "Save"
       Then I should be on "/databags/create/test-databag-1"
       And I should see "The id field is required."
       And the "item_name_1" field should contain "Field name"
       And the "item_value_1" field should contain "Field value"
+
+  Scenario: Save the item with its fields
+    When I fill in "id" with "test-databag-item-2"
+    When I press "Save"
+    Then I should be on "/databags/test-databag-1"
+        And I should see "Databag item test-databag-item-2 created. "
