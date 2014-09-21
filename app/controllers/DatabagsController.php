@@ -119,9 +119,11 @@ class DatabagsController extends BaseController
 
         $databag_item = new StdClass();
         $databag_item->id = $databag_name;
-        foreach ($item_value['item_name'] as $index => $field_name) {
-            $field_value = $item_value['item_value'][$index];
-            $databag_item->$field_name = $field_value;
+        if (isset($item_value['item_name'])) {
+            foreach ($item_value['item_name'] as $index => $field_name) {
+                $field_value = $item_value['item_value'][$index];
+                $databag_item->$field_name = $field_value;
+            }
         }
 
         try {

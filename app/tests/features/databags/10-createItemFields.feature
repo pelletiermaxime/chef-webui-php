@@ -39,6 +39,7 @@ Feature: Create databags items with custom fields
       And the "item_name_1" field should contain "Field name"
       And the "item_value_1" field should contain "Field value"
 
+  @javascript
   Scenario: Save the item with its fields
     When I fill in "id" with "test-databag-item-2"
     When I press "Save"
