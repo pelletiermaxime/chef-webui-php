@@ -6,7 +6,7 @@
 function refreshRunList() {
     var cookbooks = ''
     $("#panel-available-run-list .run-list .available_recipe").each(function(index, el) {
-        cookbooks += ' ' + $(el).text();
+        cookbooks += ' ' + $.trim($(el).text());
     });
     $('#run_list').val(cookbooks);
 }

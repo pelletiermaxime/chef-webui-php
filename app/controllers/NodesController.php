@@ -77,6 +77,9 @@ class NodesController extends BaseController
             $node->run_list = explode(' ', trim($input->run_list));
         }
 
+        // Debugbar::log($input->run_list);
+        // Debugbar::log($node->run_list);
+
         Chef::put("/nodes/{$input->node_name}", $node);
 
         Cache::forget("node-{$input->node_name}");
@@ -114,6 +117,11 @@ class NodesController extends BaseController
         return Redirect::route('nodes.index')->withSuccess("Node <b>$id</b> deleted.");
     }
 
+    /**
+     * [clean_run_list Transforms the run_list from the API into an array]
+     * @param  array $run_list in format "['recipe[a]', 'recipe[b]', 'role[a]']"
+     * @return array $expanded_run_list "['recipe' => ['a', 'b'], 'role' => ['a']]"
+     */
     private function clean_run_list($run_list)
     {
         $expanded_run_list['recipe'] = [];
