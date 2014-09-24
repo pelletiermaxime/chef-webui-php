@@ -126,6 +126,9 @@ Environment: {{ $node->chef_environment }}
             <a href="#collapse-default" data-toggle="collapse">
                 <b>Default:</b>
             </a>
+            <button type="submit" class="btn btn-primary navbar-right" style="position: relative;top: -8px;">
+                Save
+            </button>
         </h3>
     </div>
     <div id="collapse-default" class="panel-collapse collapse in">
@@ -143,6 +146,9 @@ Environment: {{ $node->chef_environment }}
             <a href="#collapse-default" data-toggle="collapse">
                 <b>Normal:</b>
             </a>
+            <button type="submit" class="btn btn-primary navbar-right" style="position: relative;top: -8px;">
+                Save
+            </button>
         </h3>
     </div>
     <div id="collapse-default" class="panel-collapse collapse in">
