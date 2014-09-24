@@ -12,8 +12,9 @@ function refreshRunList() {
 }
 
 $(function() {
-    $('.jstree').jstree({
-        "plugins" : ["wholerow"]
+    $('.jstree').jstree({});
+    $(document).on('click', '.jstree-leaf', function() {
+        $(this).find('input').focus();
     });
     $(".available_recipe").draggable({
         revert: "invalid",
