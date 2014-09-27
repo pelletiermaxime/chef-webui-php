@@ -8,7 +8,7 @@ Acceptance tests (BDD) with Behat
 
 You need Behat 3, Mink and the proper drivers. I personally like to have them installed globally via composer for my user and add "~/.composer/vendor/bin" to my PATH.
 
-.. code-block:: js
+```json
 {
     "require": {
         "behat/behat": "3.*"
@@ -20,6 +20,7 @@ You need Behat 3, Mink and the proper drivers. I personally like to have them in
         ,"behat/mink-selenium2-driver":  "~1.1"
     }
 }
+```
 
 Next you need to install the stuff needed by the drivers.
 
@@ -36,9 +37,17 @@ Nothing. Yay. By far the easiest to use and the fastest.
 
 Download the selenium server on "http://docs.seleniumhq.org/download/". I also recommand the chrome backend on "http://chromedriver.storage.googleapis.com/index.html". Here's how to start it without and with the chrome driver.
 
-.. code-block:: sh
+```sh
 java -jar selenium-server-*.jar
 java -Dwebdriver.chrome.driver=./chromedriver -jar selenium-server-*.jar
+```
+
+Or you can just launch chromedriver directly, but it seems way slower for me. Maybe I'm doing it wrong ?
+
+```sh
+./chromedriver --port=4444 --url-base=wd/hub
+```
+
 
 #### Zombie
 
