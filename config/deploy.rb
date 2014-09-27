@@ -4,7 +4,8 @@ lock '3.2.1'
 set :application, 'chefwebui'
 set :repo_url, 'https://github.com/pelletiermaxime/chef-webui-php.git'
 
-set :ssh_options, forward_agent: true
+set :ssh_options, forward_agent: true, port: 36220
+
 set :deploy_to, '/var/www/chefwebui.pelletiermaxime.info'
 
 set :linked_dirs, [
