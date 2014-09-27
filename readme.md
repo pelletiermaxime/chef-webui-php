@@ -14,9 +14,11 @@ The current open source webui is really slow, ugly, hard to use and not maintain
 Features
 --------
 
-* Databags listing and editing
-* Nodes listing and attributes listing
-* Cookbooks listing
+* No JSON editing. Anywhere.
+* Simple databag creation/edition. No JSON.
+* Very fast because of aggressive caching of API calls. No idea why making API calls is this slow, so i'm just doing the minimum I have to.
+* Did I say no JSON ? Sysops/Devops shouldn't have to manually edit attributes.
+* Hopefully doesn't look as bad.
 
 Demo
 -----
@@ -36,7 +38,6 @@ Installation
 TODO
 ----
 
-* Support array fields
-* Editing of existing node attributes
-* Editing of node cookbooks
+* Support array fields for databags and node attributes
 * Roles
+* Environments
