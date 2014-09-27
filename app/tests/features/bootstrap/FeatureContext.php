@@ -83,7 +83,6 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext
     {
         $session = $this->getSession();
         $session->executeScript("$('#run_list').val('');");
-        // $session = $this->getSession();
         // $page = $session->getPage();
         // $el1 = $page->find('xpath', "//p[text()='$recipe']")->getParent();
         // $el2 = $page->findById('panel-available-recipes');
