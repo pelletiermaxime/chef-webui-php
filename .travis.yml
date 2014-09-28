@@ -9,6 +9,8 @@ before_install:
 before_script:
   - php artisan serve &
   - bundle exec chef-zero -d
+  - bundle exec berks update -b app/tests/Berksfile
+  - BERKSHELF_CHEF_CONFIG="app/tests/client.rb" bundle exec berks upload -b app/tests/Berksfile
   - sleep 3
 
 services:

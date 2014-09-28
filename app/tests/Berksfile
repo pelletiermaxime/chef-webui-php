@@ -1,0 +1,4 @@
+source 'https://supermarket.getchef.com'
+
+cookbook 'test-cookbook', path: 'test-cookbook'
+

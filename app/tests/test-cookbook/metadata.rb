@@ -1,0 +1,6 @@
+name               'test-cookbook'
+maintainer         'Maxime Pelletier'
+maintainer_email   'pelletiermaxime@gmail.com'
+description        'Cookbook for webui tests'
+long_description   ''
+version            '0.1.0'

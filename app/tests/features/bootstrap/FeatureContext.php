@@ -88,4 +88,13 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext
         // $el2 = $page->findById('panel-available-recipes');
         // $el1->dragTo($el2);
     }
+
+    /**
+     * @Given I run chef-client
+     */
+    public function iRunChefClient()
+    {
+        exec('bundle exec chef-client --config app/tests/client.rb');
+        Cache::forget("node-test-node-1");
+    }
 }

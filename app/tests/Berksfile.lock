@@ -1,0 +1,6 @@
+DEPENDENCIES
+  test-cookbook
+    path: test-cookbook
+
+GRAPH
+  test-cookbook (0.1.0)
