@@ -6,8 +6,6 @@
 	"require": {
 		"laravel/framework": "4.2.*"
 		,"jenssegers/chef": "dev-master"
-		,"tyrola/xmpphp": "1.0.*@dev"
-		,"barryvdh/laravel-debugbar": "1.*"
 		,"vakata/jstree": "3.0.*"
 		,"components/bootstrap": "3.2.*"
 		,"javve/list.js": "1.1.*"
@@ -21,6 +19,7 @@
 		,"behat/mink-zombie-driver": "~1.2"
 		,"phpunit/phpunit": "~4.0"
 		,"way/generators": "~2.0"
+		,"barryvdh/laravel-debugbar": "1.*"
 	},
 	"autoload": {
 		"classmap": [
