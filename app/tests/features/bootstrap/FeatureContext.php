@@ -97,4 +97,16 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext
         exec('bundle exec chef-client --config app/tests/client.rb');
         Cache::forget("node-test-node-1");
     }
+
+    /**
+     * @When I open the tree leaf :leaf_number of the :panel_id panel
+     */
+    public function iOpenTheTreeLeafOfThePanel($leaf_number, $panel_id)
+    {
+        $treeNumber = ['override' => 1, 'default' => 2, 'normal' => 3];
+        $session = $this->getSession();
+        $leaf = "j{$treeNumber[$panel_id]}_$leaf_number";
+        $open_node = "$('#attributes-$panel_id .jstree').jstree().open_node('$leaf');";
+        $session->executeScript($open_node);
+    }
 }

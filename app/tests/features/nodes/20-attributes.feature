@@ -12,4 +12,11 @@ Feature: Attributes management for nodes
       Then I should be on "/nodes/test-node-1"
 
     Scenario: Run chef-client to create attributes
-      Given I run chef-client
+      # Given I run chef-client
+      When I reload the page
+      Then the "#attributes-default span.attribute-name" element should contain "test-cookbook"
+
+    @javascript
+    Scenario: Open the attribute tree
+      When I open the tree leaf "1" of the "default" panel
+      Then the "test-cookbook[attribute1]" field should contain "value-attribute1"

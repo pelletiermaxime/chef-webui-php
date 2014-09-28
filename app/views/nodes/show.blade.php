@@ -58,7 +58,7 @@ Environment: {{ $node->chef_environment }}
 {{ Form::hidden('node_name', $node->name) }}
 {{ Form::hidden('run_list', implode(' ', $node->run_list['recipe']), ['id' => 'run_list']) }}
 
-<div class="panel panel-primary">
+<div class="panel panel-primary" id="attributes-override">
     <div class="panel-heading">
         <div class="panel-title">
             <a href="#collapse-override" data-toggle="collapse">
@@ -78,7 +78,7 @@ Environment: {{ $node->chef_environment }}
     </div>
 </div>
 
-<div class="panel panel-primary">
+<div class="panel panel-primary" id="attributes-default">
     <div class="panel-heading">
         <h3 class="panel-title">
             <a href="#collapse-default" data-toggle="collapse">
@@ -98,7 +98,7 @@ Environment: {{ $node->chef_environment }}
     </div>
 </div>
 
-<div class="panel panel-primary">
+<div class="panel panel-primary" id="attributes-normal">
     <div class="panel-heading">
         <h3 class="panel-title">
             <a href="#collapse-default" data-toggle="collapse">
@@ -117,8 +117,10 @@ Environment: {{ $node->chef_environment }}
         </div>
     </div>
 </div>
+
 {{ Form::close() }}
-<div class="panel panel-primary">
+
+<div class="panel panel-primary" id="attributes-automatic">
     <div class="panel-heading">
         <h3 class="panel-title">
             <a href="#collapse-default" data-toggle="collapse">
