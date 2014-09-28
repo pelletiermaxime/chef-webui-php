@@ -1,3 +1,5 @@
-default['test-cookbook']['attribute1'] = 'value-attribute1'
+default['test-cookbook']['default-attribute1'] = 'value-default-attribute1'
 default['test-cookbook']['attributearray']['attr1'] = 'value-array-attr1'
 default['test-cookbook']['attributearray']['attr2'] = 'value-array-attr2'
+normal['test-cookbook']['normal-attribute1'] = 'value-normal-attribute1'
+override['test-cookbook']['override-attribute1'] = 'value-override-attribute1'

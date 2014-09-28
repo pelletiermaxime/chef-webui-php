@@ -70,7 +70,8 @@ class NodesController extends BaseController
 
         // $node->override->nsca->encryption_method = "2";
         // $node->override = $attributes;
-        $node->normal = $attributes;
+        // $node->normal = $attributes;
+        $node->default = $attributes;
         if (empty($input->run_list)) {
             unset($node->run_list);
         } else {

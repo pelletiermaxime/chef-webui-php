@@ -20,12 +20,12 @@ Feature: Attributes management for nodes
     @javascript
     Scenario: Open the attribute tree
       When I open the tree leaf "1" of the "default" panel
-      Then the "test-cookbook[attribute1]" field should contain "value-attribute1"
+      Then the "test-cookbook[default-attribute1]" field should contain "value-default-attribute1"
 
     @javascript
     Scenario: Edit "attribute1"
-      When I fill in "test-cookbook[attribute1]" with "new attribute1 value"
+      When I fill in "test-cookbook[default-attribute1]" with "new attribute1 value"
       When I press "Save node"
-      When I open the tree leaf "1" of the "normal" panel
-      Then the "test-cookbook[attribute1]" field should contain "new attribute1 value"
+      When I open the tree leaf "1" of the "default" panel
+      Then the "test-cookbook[default-attribute1]" field should contain "new attribute1 value"
 
