@@ -63,15 +63,13 @@ class NodesController extends BaseController
 
         $node = Chef::get("/nodes/{$input->node_name}");
 
+        // Convert array into object
         $attributes = json_decode(json_encode($attributes), false);
 
-        // var_dump($attributes);
-        // die;
+        foreach ($attributes as $type => $attribute) {
+            $node->$type = $attribute;
+        }
 
-        // $node->override->nsca->encryption_method = "2";
-        // $node->override = $attributes;
-        // $node->normal = $attributes;
-        $node->default = $attributes;
         if (empty($input->run_list)) {
             unset($node->run_list);
         } else {

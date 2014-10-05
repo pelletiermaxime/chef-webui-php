@@ -8,7 +8,7 @@ function refreshRunList() {
 
 $(function() {
     $('.jstree').jstree({});
-    $(document).on('click', '.jstree-leaf', function() {
+    $(document).on('click', '.jstree-leaf :not(input)', function() {
         $(this).find('input').focus();
     });
     $(".available_recipe").draggable({

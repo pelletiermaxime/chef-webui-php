@@ -3,17 +3,17 @@
     <?php
     $name = $index;
     if (isset($parent)) {
-        $name = "{$parent}[{$index}]";
+        $name = "[{$parent}][{$index}]";
     }
     ?>
     <li><span class="attribute-name">{{ $index }}</span>
     @if (is_object($value) || is_array($value))
         <ul>
-        @include('nodes.showItem', ['values' => (array)$value, 'parent' => $name])
+        @include('nodes.showItem', ['values' => (array)$value, 'parent' => $name, 'attribute_name' => $attribute_name])
         </ul>
     @else
         @if (!empty($edit))
-            {{ Form::text($name, $value, ['class' => 'attribute']) }}
+            {{ Form::text("{$attribute_name}{$name}", $value, ['class' => 'attribute']) }}
         @else
             {{ $value }}
         @endif
