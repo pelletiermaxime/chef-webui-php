@@ -7,10 +7,13 @@ function refreshRunList() {
 }
 
 $(function() {
-    $('.jstree').jstree({});
-    $(document).on('click', '.jstree-leaf :not(input)', function() {
-        $(this).find('input').focus();
+    $('.jstree').jstree({}).on('before_open.jstree', function(node){
+        $inputs = $('.jstree').find('input');
+        $inputs.each(function(index, el) {
+            $(el).appendTo($(el).parents('li:first'));
+        });
     });
+
     $(".available_recipe").draggable({
         revert: "invalid",
         helper: "clone",
