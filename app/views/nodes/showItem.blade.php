@@ -15,7 +15,7 @@
         @if (!empty($edit))
             {{ Form::text("{$attribute_name}{$name}", $value, ['class' => 'attribute']) }}
         @else
-            {{ $value }}
+            <input disabled value="{{ $value }}" />
         @endif
     @endif
     </li>

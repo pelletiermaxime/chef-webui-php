@@ -6,13 +6,21 @@ function refreshRunList() {
     $('#run_list').val(cookbooks);
 }
 
-$(function() {
-    $('.jstree').jstree({}).on('before_open.jstree', function(node){
-        $inputs = $('.jstree').find('input');
-        $inputs.each(function(index, el) {
-            $(el).appendTo($(el).parents('li:first'));
-        });
+// Move the inputs out of the <a> to prevent jstree's events
+function moveInputsOutofLeaves() {
+    $inputs = $('.jstree').find('a input');
+    $inputs.each(function(index, el) {
+        $(el).appendTo($(el).parents('li:first'));
     });
+}
+
+$(function() {
+    $('.jstree').jstree({})
+        .on('before_open.jstree', function(node){
+            moveInputsOutofLeaves();
+        });
+
+    moveInputsOutofLeaves();
 
     $(".available_recipe").draggable({
         revert: "invalid",
