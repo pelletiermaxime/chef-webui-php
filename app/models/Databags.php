@@ -1,7 +1,7 @@
 <?php
 
-class Databags {
-
+class Databags
+{
 	public static $rulesCreate = [
 		'name' => [
 			'required',
@@ -15,5 +15,4 @@ class Databags {
 			'regex:/^[\.\-[:alnum:]_]+$/',
 		],
 	];
-
 }

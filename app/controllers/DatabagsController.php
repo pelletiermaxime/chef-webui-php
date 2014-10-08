@@ -74,14 +74,20 @@ class DatabagsController extends BaseController
     {
         $item_value = Input::except(['databag_name', '_token']);
 
-        if (isset($item_value['databag_item'])) {
-            return $this->storeCreateItem();
+        $validationRules = Databags::$rulesCreate;
+
+        if (isset($item_value['databag_item'])) { //Create/modify item
+            $validationRules = Databags::$rulesCreateItem;
         }
 
-        $validator = Validator::make($item_value, Databags::$rulesCreate);
+        $validator = Validator::make($item_value, $validationRules);
 
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator)->withInput();
+        }
+
+        if (isset($item_value['databag_item'])) {
+            return $this->storeCreateItem($item_value);
         }
 
         $item_value = (object) $item_value;
@@ -90,29 +96,17 @@ class DatabagsController extends BaseController
 
         $databag_name = $item_value->name;
 
-        try {
-            Chef::post($url, $item_value);
-        } catch (Exception $e) {
-            $errorMsg = "Error creating databag: " . $e->getMessage();
-            return Redirect::back()->withErrors($errorMsg)->withInput();
+        $successfulSave = $this->saveDatabag($url, $item_value);
+        if ($successfulSave !== true) {
+            return $successfulSave;
         }
-
-        Cache::forget($url);
 
         $successMessage = "Databag <b>$databag_name</b> created.";
         return Redirect::route('databags.index')->withSuccess($successMessage);
     }
 
-    public function storeCreateItem()
+    public function storeCreateItem($item_value)
     {
-        $item_value = Input::except(['databag_name', '_token']);
-
-        $validator = Validator::make($item_value, Databags::$rulesCreateItem);
-
-        if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
-        }
-
         $databag_name = $item_value['id'];
         $databag_item_name = $item_value['databag_item'];
         $url = "/data/$databag_item_name";
@@ -126,17 +120,32 @@ class DatabagsController extends BaseController
             }
         }
 
+        $method = 'post';
+        if (isset($item_value['action']) && $item_value['action'] == 'modify') {
+            $method = 'put';
+            $url = "/data/$databag_item_name/$databag_name";
+        }
+
+        $successfulSave = $this->saveDatabag($url, $databag_item, $method);
+        if ($successfulSave !== true) {
+            return $successfulSave;
+        }
+
+        $successMessage = "Databag item <b>$databag_name</b> saved.";
+        return Redirect::route('databags.show', $databag_item_name)->withSuccess($successMessage);
+    }
+
+    private function saveDatabag($url, $value, $method = 'post')
+    {
         try {
-            Chef::post($url, $databag_item);
+            Chef::$method($url, $value);
         } catch (Exception $e) {
-            $errorMsg = "Error creating databag item: " . $e->getMessage();
+            $errorMsg = "Error saving: " . $e->getMessage();
             return Redirect::back()->withErrors($errorMsg)->withInput();
         }
 
         Cache::forget($url);
-
-        $successMessage = "Databag item <b>$databag_name</b> created.";
-        return Redirect::route('databags.show', $databag_item_name)->withSuccess($successMessage);
+        return true;
     }
 
     public function destroy($id)
