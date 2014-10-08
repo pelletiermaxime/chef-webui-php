@@ -9,4 +9,13 @@ Feature: Edit previously created databag item
     When I follow "test-databag-item-2"
     Then I should be on "/databags/test-databag-1/item/test-databag-item-2"
       And the "id" field should contain "test-databag-item-2"
-      And the "Field name" field should contain "Field value"
+      And the "item_value_1" field should contain "value"
+      And the "item_value_2" field should contain "Field value"
+      And I should see "Edit databag item test-databag-item-2"
+
+  @javascript
+  Scenario: Edit the "name" field with a new value
+    When I fill in "item_value_1" with "new value"
+    When I press "Save"
+    Then I should be on "/databags/test-databag-1"
+        And I should see "Databag item test-databag-item-2 saved."

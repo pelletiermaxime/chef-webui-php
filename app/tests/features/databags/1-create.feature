@@ -27,7 +27,7 @@ Feature: Create databags and databags items
       When I fill in "name" with "test-databag-1"
       When I press "Save"
       Then I should be on "/databags/create"
-        And I should see "Error creating databag: Object already exists"
+        And I should see "Error saving: Object already exists"
 
     Scenario: Create invalid databag item "test databag item 1"
       Given I am on homepage
@@ -57,4 +57,4 @@ Feature: Create databags and databags items
       When I fill in "id" with "test-databag-item-1"
       When I press "Save"
       Then I should be on "/databags/create/test-databag-1"
-        And I should see "Error creating databag item: Object already exists"
+        And I should see "Error saving: Object already exists"

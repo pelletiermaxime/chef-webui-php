@@ -26,22 +26,30 @@ Feature: Create databags items with custom fields
     And the "item_value_2" field should contain ""
 
   @javascript
+  Scenario: Add another new field and check the IDs and if it's empty
+    When I fill in "item_name_2" with "name"
+    And I fill in "item_value_2" with "value"
+    And I press "Add field"
+    Then the "item_name_3" field should contain ""
+    And the "item_value_3" field should contain ""
+
+  @javascript
   Scenario: Delete the empty field
-    When I press "remove_field_2"
-    Then I should see 3 ".add_field" element
-    Then I should see 2 ".remove_field" element
+    When I press "remove_field_3"
+    Then I should see 4 ".add_field" element
+    Then I should see 3 ".remove_field" element
 
   @javascript
   Scenario: Save without mandatory ID field
     When I press "Save"
       Then I should be on "/databags/create/test-databag-1"
       And I should see "The id field is required."
-      And the "item_name_1" field should contain "Field name"
-      And the "item_value_1" field should contain "Field value"
+      And the "item_name_1" field should contain "name"
+      And the "item_value_1" field should contain "value"
 
   @javascript
   Scenario: Save the item with its fields
     When I fill in "id" with "test-databag-item-2"
     When I press "Save"
     Then I should be on "/databags/test-databag-1"
-        And I should see "Databag item test-databag-item-2 created. "
+        And I should see "Databag item test-databag-item-2 saved."
