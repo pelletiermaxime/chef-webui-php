@@ -2,11 +2,16 @@ default:
     formatters:
         pretty: true
     autoload:
-        - %paths.base%/app/tests/features/bootstrap
+        - %paths.base%/app/tests/contexts
     suites:
-        test:
-            paths:
-                - %paths.base%/app/tests/features
+        ui:
+            paths: [ %paths.base%/app/tests/features ]
+            contexts: [ UserInterfaceContext ]
+            # filters: { tags: '@ui' }
+        # domain:
+            # paths: [ %paths.base%/app/tests/features ]
+            # contexts: [ DomainContext ]
+            # filters: { tags: '@domain' }
     extensions:
         Behat\MinkExtension:
             # goutte: ~

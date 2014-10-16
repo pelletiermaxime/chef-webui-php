@@ -1,52 +1,12 @@
 <?php
 
-use Behat\Behat\Tester\Exception\PendingException;
-use Behat\Behat\Context\SnippetAcceptingContext;
-// use Behat\Gherkin\Node\PyStringNode;
-// use Behat\Gherkin\Node\TableNode;
-
-use Behat\MinkExtension\Context\MinkContext;
-
 /**
  * Behat context class.
  */
-// class FeatureContext implements SnippetAcceptingContext
-class FeatureContext extends MinkContext implements SnippetAcceptingContext
+class UserInterfaceContext extends BaseContext
 {
-    /**
-     * Initializes context.
-     *
-     * Every scenario gets its own context object.
-     * You can also pass arbitrary arguments to the context constructor through behat.yml.
-     */
     public function __construct()
     {
-    }
-
-     /**
-    * @static
-    * @beforeSuite
-    */
-    public static function bootstrapLaravel()
-    {
-        $unitTesting = true;
-        $testEnvironment = 'testing';
-        require __DIR__.'/../../../../bootstrap/autoload.php';
-        $app = require_once __DIR__.'/../../../../bootstrap/start.php';
-        $app->boot();
-    }
-
-     /**
-    * Take screenshot when step fails.
-    * Works only with Selenium2Driver.
-    *
-    * @AfterStep
-    */
-    public function takeScreenshotAfterFailedStep($event)
-    {
-        if ($event->getTestResult()->hasException()) {
-            $this->showLastResponse();
-        }
     }
 
     /**
