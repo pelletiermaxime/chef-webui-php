@@ -1,4 +1,4 @@
-server 'pelletiermaxime.info', user: 'deploy', roles: %w(web app)
+server 'nhlstats.org', user: 'deploy', roles: %w(web app)
 
 set :branch, 'master'
 
