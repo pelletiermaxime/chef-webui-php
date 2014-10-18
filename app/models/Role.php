@@ -30,8 +30,6 @@ class Role
 
     public function save()
     {
-        $messages = [];
-
         $role = new StdClass;
         $role->name        = $this->name;
         $role->description = $this->description;
