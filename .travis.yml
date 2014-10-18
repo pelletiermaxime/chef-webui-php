@@ -3,6 +3,7 @@ php:
   - 5.6
 
 before_install:
+  - sudo apt-get install libgecode-dev
   - composer install
   - bundle install --without deploy --jobs=3 --retry=3
 
