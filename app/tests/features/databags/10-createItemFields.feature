@@ -48,8 +48,9 @@ Feature: Create databags items with custom fields
       And the "item_value_1" field should contain "value"
 
   @javascript
-  Scenario: Save the item with its fields
+  Scenario: Add an empty field and save the item with its fields
     When I fill in "id" with "test-databag-item-2"
+    And I press "Add field"
     When I press "Save"
     Then I should be on "/databags/test-databag-1"
         And I should see "Databag item test-databag-item-2 saved."
