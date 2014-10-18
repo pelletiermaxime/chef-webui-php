@@ -8,10 +8,10 @@ default:
             paths: [ %paths.base%/app/tests/features ]
             contexts: [ UserInterfaceContext ]
             # filters: { tags: '@ui' }
-        # domain:
-            # paths: [ %paths.base%/app/tests/features ]
-            # contexts: [ DomainContext ]
-            # filters: { tags: '@domain' }
+        domain:
+            paths: [ %paths.base%/app/tests/features ]
+            contexts: [ DomainContext ]
+            filters: { tags: '@domain' }
     extensions:
         Behat\MinkExtension:
             # goutte: ~
@@ -23,7 +23,7 @@ default:
             show_cmd: firefox %s
     gherkin:
         filters:
-            # tags: "~@wip"
+            tags: "~@wip"
 travisci:
     extensions:
         Behat\MinkExtension:

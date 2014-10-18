@@ -1,5 +1,7 @@
 <?php
 
+use Behat\Behat\Tester\Exception\PendingException;
+
 /**
  * Behat context class.
  */
@@ -68,5 +70,38 @@ class UserInterfaceContext extends BaseContext
         $leaf = "j{$treeNumber[$panel_id]}_$leaf_number";
         $open_node = "$('#attributes-$panel_id .jstree').jstree().open_node('$leaf');";
         $session->executeScript($open_node);
+    }
+
+
+    /**
+     * @When I create a role with name :arg1
+     */
+    public function iCreateARoleWithName($arg1)
+    {
+        return $this->iCreateARoleWithNameAndDescription($arg1, '');
+    }
+
+    /**
+     * @Then I should see the message :arg1
+     */
+    public function iShouldSeeTheMessage($arg1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @When I create a role with name :arg1 and description :arg2
+     */
+    public function iCreateARoleWithNameAndDescription($arg1, $arg2)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then a role :arg1 with description :arg2 should exists
+     */
+    public function aRoleWithDescriptionShouldExists($arg1, $arg2)
+    {
+        throw new PendingException();
     }
 }
