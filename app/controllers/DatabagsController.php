@@ -4,16 +4,14 @@ class DatabagsController extends BaseController
 {
     public function index($databagName = '')
     {
-        $dataItem = '';
         $url = "/data";
         if ($databagName !== '') {
             $url .= "/$databagName";
-            $dataItem = $databagName;
         }
         $databags = Cache::remember(
             $url,
             60, //60 minutes
-            function () use($url) {
+            function () use ($url) {
                 $databags = Chef::get($url);
                 if (empty($databags)) {
                     return [];
@@ -38,6 +36,8 @@ class DatabagsController extends BaseController
     public function editItem($databags, $item)
     {
         $dataItem = Chef::get("/data/$databags/$item");
+
+        $info = [];
         $info['databag_name'] = $databags;
         $info['item_name'] = $item;
         Debugbar::log($dataItem);
