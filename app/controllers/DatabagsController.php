@@ -58,20 +58,6 @@ class DatabagsController extends BaseController
 
     public function store()
     {
-        if (empty($input->action)) {
-            return $this->storeCreate();
-        }
-        $input = (object) Input::all();
-        $item_value = (object) Input::except(['item_name', 'databag_name', '_token', 'action']);
-
-        Chef::put("/data/{$input->databag_name}/{$input->item_name}", $item_value);
-
-        $successMessage = "Databag {$input->databag_name}/{$input->item_name} saved.";
-        return Redirect::route($redirect)->withSuccess($successMessage);
-    }
-
-    public function storeCreate()
-    {
         $item_value = Input::except(['databag_name', '_token']);
 
         $validationRules = Databags::$rulesCreate;
