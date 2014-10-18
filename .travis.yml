@@ -4,7 +4,7 @@ php:
 
 before_install:
   - sudo apt-get install libgecode-dev
-  - composer install
+  - composer install --prefer-source
   - bundle install --without deploy --jobs=3 --retry=3
 
 before_script:
