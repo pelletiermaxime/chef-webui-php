@@ -14,7 +14,7 @@ class Role
 
     /**
      * Validate role
-     * @param  Object $role
+     * @param  stdClass $role
      * @return Array  $messages Error messages
      */
     public function validate($role)
@@ -49,6 +49,9 @@ class Role
         return $messages;
     }
 
+    /**
+     * @param Exception $e
+     */
     private function saveParseException($e)
     {
         $status = $e->getCode();

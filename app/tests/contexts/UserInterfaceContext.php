@@ -91,6 +91,7 @@ class UserInterfaceContext extends BaseContext
 
     /**
      * @When I create a role with name :arg1 and description :arg2
+     * @param string $arg2
      */
     public function iCreateARoleWithNameAndDescription($arg1, $arg2)
     {

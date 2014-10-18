@@ -1,8 +1,5 @@
 <?php
 
-use Behat\Behat\Tester\Exception\PendingException;
-use Behat\Behat\Context\SnippetAcceptingContext;
-
 /**
  * Behat context class.
  */
@@ -42,6 +39,7 @@ class DomainContext extends BaseDomainContext
 
     /**
      * @When I create a role with name :arg1 and description :arg2
+     * @param string $description
      */
     public function iCreateARoleWithNameAndDescription($name, $description)
     {
