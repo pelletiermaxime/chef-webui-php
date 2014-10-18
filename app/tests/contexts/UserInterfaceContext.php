@@ -72,7 +72,6 @@ class UserInterfaceContext extends BaseContext
         $session->executeScript($open_node);
     }
 
-
     /**
      * @When I create a role with name :arg1
      */
