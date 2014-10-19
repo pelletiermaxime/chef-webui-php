@@ -15,12 +15,12 @@ class Role
     /**
      * Validate role
      * @param  stdClass $role
-     * @return Array  $messages Error messages
+     * @return array    $messages Error messages
      */
     public function validate($role)
     {
-        $messages = [];
-        $validator = Validator::make((array) $role, self::$rulesCreate);
+        $messages  = [];
+        $validator = Validator::make((array)$role, self::$rulesCreate);
 
         if ($validator->fails()) {
             $messages = $validator->messages()->all();
@@ -30,7 +30,7 @@ class Role
 
     public function save()
     {
-        $role = new StdClass;
+        $role              = new StdClass;
         $role->name        = $this->name;
         $role->description = $this->description;
 
@@ -43,20 +43,21 @@ class Role
             Chef::post('/roles', $role);
             $messages[] = "Role saved successfully.";
         } catch (Exception $e) {
-            $message = $this->saveParseException($e);
+            $message    = $this->saveParseException($e);
             $messages[] = "Error saving: " . $message;
         }
         return $messages;
     }
 
     /**
-     * @param Exception $e
+     * @param  Exception $e
+     * @return string    $message
      */
     private function saveParseException($e)
     {
-        $status = $e->getCode();
+        $status  = $e->getCode();
         $message = $e->getMessage();
-        if ($status == 409) {
+        if ($status === 409) {
             $message = "Role \"{$this->name}\" already exists.";
         }
         return $message;
@@ -67,10 +68,14 @@ class Role
         Chef::delete("/roles/{$this->name}");
     }
 
+    /**
+     * @param  string $name Role name
+     * @return Role   Role model
+     */
     public static function find($name) {
         $chefRole = Chef::get("/roles/$name");
 
-        $role = new Role;
+        $role              = new Role;
         $role->name        = $chefRole->name;
         $role->description = $chefRole->description;
 
