@@ -124,7 +124,6 @@ return array(
 
         'Jenssegers\Chef\ChefServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider',
-        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
     ),
 
     /*
