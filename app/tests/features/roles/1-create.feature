@@ -1,6 +1,5 @@
 @domain
 @roles
-@wip
 Feature: Create roles
     I should be able to create a role
 

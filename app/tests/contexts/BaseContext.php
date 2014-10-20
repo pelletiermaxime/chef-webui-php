@@ -12,7 +12,6 @@ class BaseContext extends MinkContext implements SnippetAcceptingContext
 
     /**
     * Take screenshot when step fails.
-    * Works only with javascript drivers.
     *
     * @AfterStep
     */

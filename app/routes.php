@@ -93,3 +93,30 @@ Route::group(['prefix' => 'cookbooks', /*'before' => 'auth'*/], function () {
         'uses' => 'CookbooksController@index',
     ]);
 });
+
+Route::group(['prefix' => 'roles', /*'before' => 'auth'*/], function () {
+        Route::get('/', [
+        'as'   => 'roles.index',
+        'uses' => 'RolesController@index',
+    ]);
+
+    Route::get('/create', [
+        'as'   => 'roles.create',
+        'uses' => 'RolesController@create',
+    ]);
+
+    Route::post('/', [
+        'as'   => 'roles.store',
+        'uses' => 'RolesController@store',
+    ]);
+
+    Route::get('/{roles}', [
+        'as'   => 'roles.show',
+        'uses' => 'RolesController@show',
+    ]);
+
+    Route::get('/destroy/{id}', [
+        'as'   => 'roles.destroy',
+        'uses' => 'RolesController@destroy',
+    ]);
+});

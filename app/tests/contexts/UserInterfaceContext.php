@@ -75,33 +75,53 @@ class UserInterfaceContext extends BaseContext
     /**
      * @When I create a role with name :arg1
      */
-    public function iCreateARoleWithName($arg1)
+    public function iCreateARoleWithName($name)
     {
-        return $this->iCreateARoleWithNameAndDescription($arg1, '');
+        return $this->iCreateARoleWithNameAndDescription($name, '');
     }
 
     /**
      * @Then I should see the message :arg1
      */
-    public function iShouldSeeTheMessage($arg1)
+    public function iShouldSeeTheMessage($message)
     {
-        throw new PendingException();
+        $this->assertPageContainsText($message);
     }
 
     /**
      * @When I create a role with name :arg1 and description :arg2
-     * @param string $arg2
+     * @param string $description
      */
-    public function iCreateARoleWithNameAndDescription($arg1, $arg2)
+    public function iCreateARoleWithNameAndDescription($name, $description)
     {
-        throw new PendingException();
+        $this->iAmOnHomepage();
+        $this->clickLink('Roles');
+        $this->clickLink('Create');
+        $this->fillField('name', $name);
+        $this->fillField('description', $description);
+        $this->pressButton('Save');
     }
 
     /**
-     * @Then a role :arg1 with description :arg2 should exists
+     * @Then a role named :arg1 with description :arg2 should exists
      */
-    public function aRoleWithDescriptionShouldExists($arg1, $arg2)
+    public function aRoleNamedWithDescriptionShouldExists($name, $description)
     {
-        throw new PendingException();
+        $this->iAmOnHomepage();
+        $this->clickLink('Roles');
+        $this->assertPageContainsText($name);
+    }
+
+    /**
+     * @AfterScenario @cleanup
+     */
+    public function cleanupRoles()
+    {
+        $roles = Role::lists();
+        foreach ($roles as $name => $url) {
+            $role = new Role;
+            $role->name = $name;
+            $role->delete();
+        }
     }
 }

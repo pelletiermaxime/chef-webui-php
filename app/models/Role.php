@@ -4,6 +4,7 @@ class Role
 {
     public $name;
     public $description;
+    public $messages;
 
     public static $rulesCreate = [
         'name' => [
@@ -34,19 +35,20 @@ class Role
         $role->name        = $this->name;
         $role->description = $this->description;
 
-        $messages = $this->validate($role);
-        if (!empty($messages)) {
-            return $messages;
+        $this->messages = $this->validate($role);
+        if (!empty($this->messages)) {
+            return false;
         }
 
         try {
             Chef::post('/roles', $role);
-            $messages[] = "Role saved successfully.";
+            $this->messages[] = "Role saved successfully.";
         } catch (Exception $e) {
             $message    = $this->saveParseException($e);
-            $messages[] = "Error saving: " . $message;
+            $this->messages[] = "Error saving: " . $message;
+            return false;
         }
-        return $messages;
+        return true;
     }
 
     /**
@@ -72,13 +74,24 @@ class Role
      * @param  string $name Role name
      * @return Role   Role model
      */
-    public static function find($name) {
+    public static function find($name)
+    {
         $chefRole = Chef::get("/roles/$name");
+
+        if (empty($chefRole->name)) {
+            return [];
+        }
 
         $role              = new Role;
         $role->name        = $chefRole->name;
         $role->description = $chefRole->description;
 
         return $role;
+    }
+
+    public static function lists()
+    {
+        $chefRole = Chef::get("/roles");
+        return (array)$chefRole;
     }
 }

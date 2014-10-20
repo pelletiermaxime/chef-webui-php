@@ -16,7 +16,7 @@ class DomainContext extends BaseDomainContext
     /**
       * @AfterScenario @cleanup
       */
-    public function cleanDB()
+    public function cleanupRoles()
     {
         $this->role->delete();
     }
@@ -24,9 +24,9 @@ class DomainContext extends BaseDomainContext
     /**
      * @When I create a role with name :arg1
      */
-    public function iCreateARoleWithName($arg1)
+    public function iCreateARoleWithName($name)
     {
-        return $this->iCreateARoleWithNameAndDescription($arg1, '');
+        return $this->iCreateARoleWithNameAndDescription($name, '');
     }
 
     /**
@@ -34,7 +34,7 @@ class DomainContext extends BaseDomainContext
      */
     public function iShouldSeeTheMessage($message)
     {
-        PHPUnit_Framework_Assert::assertContains($message, $this->messages, print_r($this->messages, true));
+        PHPUnit_Framework_Assert::assertContains($message, $this->role->messages, print_r($this->role->messages, true));
     }
 
     /**
@@ -45,7 +45,7 @@ class DomainContext extends BaseDomainContext
     {
         $this->role->name         = $name;
         $this->role->description  = $description;
-        $this->messages = $this->role->save();
+        $this->role->save();
     }
 
     /**
