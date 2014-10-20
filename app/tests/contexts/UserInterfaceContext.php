@@ -110,6 +110,7 @@ class UserInterfaceContext extends BaseContext
         $this->iAmOnHomepage();
         $this->clickLink('Roles');
         $this->assertPageContainsText($name);
+        $this->clickLink($name);
     }
 
     /**
@@ -119,7 +120,7 @@ class UserInterfaceContext extends BaseContext
     {
         $roles = Role::lists();
         foreach ($roles as $name => $url) {
-            $role = new Role;
+            $role       = new Role;
             $role->name = $name;
             $role->delete();
         }

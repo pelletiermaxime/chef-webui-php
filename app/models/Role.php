@@ -44,7 +44,7 @@ class Role
             Chef::post('/roles', $role);
             $this->messages[] = "Role saved successfully.";
         } catch (Exception $e) {
-            $message    = $this->saveParseException($e);
+            $message          = $this->saveParseException($e);
             $this->messages[] = "Error saving: " . $message;
             return false;
         }
@@ -72,7 +72,7 @@ class Role
 
     /**
      * @param  string $name Role name
-     * @return Role   Role model
+     * @return Role|array   Role model or empty array if not found
      */
     public static function find($name)
     {

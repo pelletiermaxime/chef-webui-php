@@ -2,6 +2,10 @@
 
 class RolesController extends BaseController
 {
+    /**
+     * List all roles
+     * @return View
+     */
     public function index()
     {
         $roles = Role::lists();
@@ -11,6 +15,11 @@ class RolesController extends BaseController
         ;
     }
 
+    /**
+     * Show a specific role
+     * @param  string $name Role name
+     * @return View
+     */
     public function show($name)
     {
         $role = Role::find($name);
@@ -20,11 +29,19 @@ class RolesController extends BaseController
         ;
     }
 
+    /**
+     * Show the create page
+     * @return View
+     */
     public function create()
     {
         return View::make('roles/create');
     }
 
+    /**
+     * Save the role
+     * @return Redirect Either back with errors or to listing with success
+     */
     public function store()
     {
         $input = Input::except(['_token']);
@@ -41,6 +58,11 @@ class RolesController extends BaseController
         return Redirect::route('roles.index')->withSuccess($role->messages[0]);
     }
 
+    /**
+     * Delete the role
+     * @param  string $name Role name
+     * @return Redirect Back to index with success
+     */
     public function destroy($name)
     {
         $role       = new Role;
