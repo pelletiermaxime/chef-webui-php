@@ -42,11 +42,14 @@ class NodesController extends BaseController
         }
 
         $cookbooks = Cookbooks::getForEnvironment($node->chef_environment);
+        $roles = Role::all($node->chef_environment);
         Debugbar::log($cookbooks);
+        Debugbar::log($roles);
 
         return View::make('nodes/show')
             ->withNode($node)
             ->withAvailableCookbooks($cookbooks)
+            ->withAvailableRoles($roles)
             ;
     }
 

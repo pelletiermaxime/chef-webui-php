@@ -104,7 +104,7 @@ class Role
         return $role;
     }
 
-    public static function lists()
+    public static function all()
     {
         $chefRole = Chef::get("/roles");
         return (array)$chefRole;

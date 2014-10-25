@@ -8,7 +8,7 @@ class RolesController extends BaseController
      */
     public function index()
     {
-        $roles = Role::lists();
+        $roles = Role::all();
 
         return View::make('roles/index')
             ->withRoles($roles)

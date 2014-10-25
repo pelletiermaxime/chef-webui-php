@@ -118,7 +118,7 @@ class UserInterfaceContext extends BaseContext
      */
     public function cleanupRoles()
     {
-        $roles = Role::lists();
+        $roles = Role::all();
         foreach ($roles as $name => $url) {
             $role       = new Role;
             $role->name = $name;
