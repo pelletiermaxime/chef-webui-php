@@ -13,6 +13,21 @@ class Role
         ],
     ];
 
+    public static function fromArray($inputs = [])
+    {
+        $role = new Role;
+        $role->name        = $inputs['name'];
+        $role->description = $inputs['description'];
+        return $role;
+    }
+
+    public static function destroy($name)
+    {
+        $role       = new Role;
+        $role->name = $name;
+        $role->delete();
+    }
+
     /**
      * Validate role
      * @param  stdClass $role

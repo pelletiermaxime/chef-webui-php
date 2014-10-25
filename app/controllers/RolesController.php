@@ -44,12 +44,9 @@ class RolesController extends BaseController
      */
     public function store()
     {
-        $input = Input::except(['_token']);
-
-        $role = new Role;
-        $role->name        = $input['name'];
-        $role->description = $input['description'];
-        $successfulSave    = $role->save();
+        $inputs         = Input::only(['name', 'description']);
+        $role           = Role::fromArray($inputs);
+        $successfulSave = $role->save();
 
         if ($successfulSave !== true) {
             return Redirect::back()->withErrors($role->messages)->withInput();
@@ -65,9 +62,7 @@ class RolesController extends BaseController
      */
     public function destroy($name)
     {
-        $role       = new Role;
-        $role->name = $name;
-        $role->delete();
+        Role::destroy($name);
         return Redirect::route('roles.index')->withSuccess("Role <b>$name</b> deleted.");
     }
 }
