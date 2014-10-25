@@ -15,10 +15,14 @@ function moveInputsOutofLeaves() {
 }
 
 $(function() {
-    $('.jstree').jstree({})
-        .on('before_open.jstree', function(node){
-            moveInputsOutofLeaves();
-        });
+    $('.jstree').each(function(index, el) {
+        if ($(el).find('ul li').length) {
+            $(el).jstree({})
+                .on('before_open.jstree', function(node){
+                    moveInputsOutofLeaves();
+                });
+        }
+    });
 
     moveInputsOutofLeaves();
 
