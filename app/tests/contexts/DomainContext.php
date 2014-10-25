@@ -1,5 +1,7 @@
 <?php
 
+use Behat\Behat\Tester\Exception\PendingException;
+
 /**
  * Behat context class.
  */
@@ -10,7 +12,6 @@ class DomainContext extends BaseDomainContext
 
     public function __construct()
     {
-        $this->role = new Role;
     }
 
     /**
@@ -18,7 +19,10 @@ class DomainContext extends BaseDomainContext
       */
     public function cleanupRoles()
     {
-        $this->role->delete();
+        $roles = Role::all();
+        foreach ($roles as $role => $url) {
+            Role::destroy($role);
+        }
     }
 
     /**
@@ -43,6 +47,7 @@ class DomainContext extends BaseDomainContext
      */
     public function iCreateARoleWithNameAndDescription($name, $description)
     {
+        $this->role               = new Role;
         $this->role->name         = $name;
         $this->role->description  = $description;
         $this->role->save();
@@ -55,5 +60,15 @@ class DomainContext extends BaseDomainContext
     {
         $role = Role::find($name);
         PHPUnit_Framework_Assert::assertEquals($description, $role->description);
+    }
+
+    /**
+     * @When I edit the role :name with description :description
+     */
+    public function iEditTheRoleWithDescription($name, $new_description)
+    {
+        $this->role               = Role::find($name);
+        $this->role->description  = $new_description;
+        $this->role->save();
     }
 }

@@ -143,4 +143,12 @@ class UserInterfaceContext extends BaseContext
         $session = $this->getSession();
         $session->executeScript("$('#roles').val('');");
     }
+
+    /**
+     * @When I edit the role :arg1 with description :arg2
+     */
+    public function iEditTheRoleWithDescription($arg1, $arg2)
+    {
+        throw new PendingException();
+    }
 }

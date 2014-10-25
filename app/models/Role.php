@@ -5,6 +5,7 @@ class Role
     public $name;
     public $description;
     public $messages;
+    public $exists = false;
 
     public static $rulesCreate = [
         'name' => [
@@ -46,21 +47,21 @@ class Role
 
     public function save()
     {
-        $role              = new StdClass;
-        $role->name        = $this->name;
-        $role->description = $this->description;
-
-        $this->messages = $this->validate($role);
+        $this->messages = $this->validate($this);
         if (!empty($this->messages)) {
             return false;
         }
 
         try {
-            Chef::post('/roles', $role);
+            if ($this->exists) { // Edit
+                Chef::put("/roles/{$this->name}", $this);
+            } else { // New
+                Chef::post('/roles', $this);
+                $this->exists = true;
+            }
             $this->messages[] = "Role saved successfully.";
         } catch (Exception $e) {
-            $message          = $this->saveParseException($e);
-            $this->messages[] = "Error saving: " . $message;
+            $this->saveParseException($e);
             return false;
         }
         return true;
@@ -77,7 +78,7 @@ class Role
         if ($status === 409) {
             $message = "Role \"{$this->name}\" already exists.";
         }
-        return $message;
+        $this->messages[] = "Error saving: " . $message;
     }
 
     public function delete()
@@ -100,6 +101,7 @@ class Role
         $role              = new Role;
         $role->name        = $chefRole->name;
         $role->description = $chefRole->description;
+        $role->exists      = true;
 
         return $role;
     }
