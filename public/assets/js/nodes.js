@@ -1,9 +1,14 @@
 function refreshRunList() {
     var cookbooks = ''
+    var roles = ''
     $("#panel-available-run-list .run-list .available_recipe").each(function(index, el) {
         cookbooks += ' ' + $.trim($(el).text());
     });
+    $("#panel-available-run-list .run-list .available_role").each(function(index, el) {
+        roles += ' role[' + $.trim($(el).text()) + ']';
+    });
     $('#run_list').val(cookbooks);
+    $('#roles').val(roles);
 }
 
 // Move the inputs out of the <a> to prevent jstree's events
@@ -26,7 +31,7 @@ $(function() {
 
     moveInputsOutofLeaves();
 
-    $(".available_recipe").draggable({
+    $(".available_recipe, .available_role").draggable({
         revert: "invalid",
         helper: "clone",
         cursor: "move",

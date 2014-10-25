@@ -61,7 +61,7 @@ class NodesController extends BaseController
     public function store()
     {
         $input = (object) Input::all();
-        $attributes = (object) Input::except(['node_name', '_token', 'run_list']);
+        $attributes = (object) Input::except(['node_name', '_token', 'run_list', 'roles']);
 
         $node = Chef::get("/nodes/{$input->node_name}");
 
@@ -72,11 +72,14 @@ class NodesController extends BaseController
             $node->$type = $attribute;
         }
 
-        if (empty($input->run_list)) {
-            unset($node->run_list);
-        } else {
-            $node->run_list = explode(' ', trim($input->run_list));
+        $node->run_list = $recipes = $roles = [];
+        if (!empty($input->run_list)) {
+            $recipes = explode(' ', trim($input->run_list));
         }
+        if (!empty($input->roles)) {
+            $roles = explode(' ', trim($input->roles));
+        }
+        $node->run_list = array_merge($recipes, $roles);
 
         // Debugbar::log($input->run_list);
         // Debugbar::log($node->run_list);

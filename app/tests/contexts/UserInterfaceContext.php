@@ -125,4 +125,22 @@ class UserInterfaceContext extends BaseContext
             $role->delete();
         }
     }
+
+    /**
+     * @When I drag :role into the role run_list
+     */
+    public function iDragIntoTheRoleRunList($role)
+    {
+        $session = $this->getSession();
+        $session->executeScript("$('#roles').val('role[$role]');");
+    }
+
+    /**
+     * @When I drag :role out of the role run_list
+     */
+    public function iDragOutOfTheRoleRunList($role)
+    {
+        $session = $this->getSession();
+        $session->executeScript("$('#roles').val('');");
+    }
 }

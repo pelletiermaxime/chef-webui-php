@@ -32,6 +32,19 @@
 	word-wrap: break-word;
 }
 
+.available_role {
+	background-color: #b19507;
+	border: 1px solid black;
+	font-weight: bold;
+	padding: 4px;
+	text-align: center;
+	width: 19%;
+	float: left;
+	margin-right: 3px;
+	margin-left: 3px;
+	word-wrap: break-word;
+}
+
 .run-list .available_recipe {
 	width: 123px;
 }

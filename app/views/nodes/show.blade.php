@@ -24,6 +24,11 @@ Environment: {{ $node->chef_environment }}
 <div class="panel panel-primary" id="panel-available-recipes">
     <input class="search" placeholder="Search" />
     <ul class="available_recipes list">
+        @foreach ($available_roles as $role => $url)
+        <li class="available_role">
+            <p class="name">{{ $role }}</p>
+        </li>
+        @endforeach
         @foreach ($available_cookbooks as $cookbook)
         <li class="available_recipe">
             <p class="name">{{ $cookbook }}</p>
@@ -38,6 +43,11 @@ Environment: {{ $node->chef_environment }}
         @foreach ($node->run_list['recipe'] as $cookbook)
         <li class="available_recipe">
             {{ $cookbook }}
+        </li>
+        @endforeach
+        @foreach ($node->run_list['role'] as $role)
+        <li class="available_role">
+            {{ $role }}
         </li>
         @endforeach
     </ul>
@@ -57,6 +67,7 @@ Environment: {{ $node->chef_environment }}
 
 {{ Form::hidden('node_name', $node->name) }}
 {{ Form::hidden('run_list', implode(' ', $node->run_list['recipe']), ['id' => 'run_list']) }}
+{{ Form::hidden('roles', 'role[' . implode('] role[', $node->run_list['role']) . ']', ['id' => 'roles']) }}
 
 <div class="panel panel-primary" id="attributes-override">
     <div class="panel-heading">
