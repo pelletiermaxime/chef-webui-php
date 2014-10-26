@@ -45,7 +45,14 @@ class RolesController extends BaseController
     public function store()
     {
         $inputs         = Input::only(['name', 'description']);
-        $role           = Role::fromArray($inputs);
+
+        if (Input::get('action') == 'edit') { // Edit
+            $role = Role::find($inputs['name']);
+            $role->description = $inputs['description'];
+        } else { // New role
+            $role = Role::fromArray($inputs);
+        }
+
         $successfulSave = $role->save();
 
         if ($successfulSave !== true) {

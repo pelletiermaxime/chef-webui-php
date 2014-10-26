@@ -15,6 +15,7 @@
     {{ Form::text('description', null, ['class' => 'form-control']) }}
 </div>
 
+{{ Form::hidden('action', 'edit') }}
 {{ Form::submit('Save', ['class' => 'btn btn-primary']) }}
 {{Form::close()}}
 @stop

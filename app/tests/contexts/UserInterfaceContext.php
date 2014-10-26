@@ -111,6 +111,8 @@ class UserInterfaceContext extends BaseContext
         $this->clickLink('Roles');
         $this->assertPageContainsText($name);
         $this->clickLink($name);
+        $this->assertFieldContains('name', $name);
+        $this->assertFieldContains('description', $description);
     }
 
     /**
@@ -145,26 +147,35 @@ class UserInterfaceContext extends BaseContext
     }
 
     /**
-     * @When I edit the role :arg1 with description :arg2
+     * @When I edit the role :name with description :new_description
      */
-    public function iEditTheRoleWithDescription($arg1, $arg2)
+    public function iEditTheRoleWithDescription($name, $new_description)
     {
-        throw new PendingException();
+        $this->iAmOnHomepage();
+        $this->clickLink('Roles');
+        $this->clickLink('Edit');
+        $this->assertFieldContains('name', $name);
+        $this->fillField('description', $new_description);
+        $this->pressButton('Save');
     }
 
     /**
-     * @When I delete the role :arg1
+     * @When I delete the role :name
      */
-    public function iDeleteTheRole($arg1)
+    public function iDeleteTheRole($name)
     {
-        throw new PendingException();
+        $this->iAmOnHomepage();
+        $this->clickLink('Roles');
+        $this->clickLink('Delete');
     }
 
     /**
-     * @Then a role named :arg1 should not exists
+     * @Then a role named :name should not exists
      */
-    public function aRoleNamedShouldNotExists($arg1)
+    public function aRoleNamedShouldNotExists($name)
     {
-        throw new PendingException();
+        $this->iAmOnHomepage();
+        $this->clickLink('Roles');
+        $this->assertPageNotContainsText($name);
     }
 }
