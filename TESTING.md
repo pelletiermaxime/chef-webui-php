@@ -12,12 +12,12 @@ You need Behat 3, Mink and the proper drivers. I personally like to have them in
 {
     "require": {
         "behat/behat": "3.*"
-        ,"behat/mink": "~1.5"
+        ,"behat/mink": "~1.6"
         ,"behat/mink-extension": "~2.0"
-        ,"behat/mink-goutte-driver": "~1.0"
-        ,"behat/mink-zombie-driver": "~1.1"
+        ,"behat/mink-goutte-driver": "~1.1"
+        ,"behat/mink-zombie-driver": "~1.2"
         ,"behat/mink-sahi-driver":  "~1.1"
-        ,"behat/mink-selenium2-driver":  "~1.1"
+        ,"behat/mink-selenium2-driver":  "~1.2"
     }
 }
 ```
@@ -31,7 +31,7 @@ I use Goutte and Selenium2 (for javascript). They are both really fast and easy 
 
 #### Goutte
 
-Nothing. Yay. By far the easiest to use and the fastest.
+It just works. By far the easiest to use and the fastest, but of course no javascript support.
 
 #### Selenium
 
@@ -48,15 +48,15 @@ Or you can just launch chromedriver directly, but it seems way slower for me. Ma
 ./chromedriver --port=4444 --url-base=wd/hub
 ```
 
-
 #### Zombie
 
-You need Zombie 1.4.1 for this. "npm install -g zombie@1.4.1"
-It didn't work on the buildin artisan server on port 8000. It also didn't work with the JQuery require. So pretty much useless. I hope someday Zombie 2 becomes stable and the Mink Zombie driver using it becomes stable because it looks like a really cool and fast and has full Javascript support.
+You need Zombie 2 for this: "npm install -g zombie". It didn't work on the buildin artisan server on port 8000.
+I recommend using the latest version of node because 0.10 was incredibly slow for me, but it got a lot better with 0.11.
+A few tests working in Selenium2 fail with weird error messages, so I don't recommend it yet.
 
 #### Sahi
 
-Somehow it was 5 times slower than Selenium2 when I tested it, and was a PITA to install and configure. If you still want to try (hey, don't mind my opinions!) you can download the .jar installer on "http://sourceforge.net/projects/sahi/files/". I installed it in my home and then used "~/sahi/bin/dashboard.sh" to test it. The weird proxy also didn't work with my install on port 8000, but worked fine with localhost. You can use "sahi.sh" in the same directory to start just the server without the ugly Java dashboard.
+Somehow it was 5 times slower than Selenium2 when I tested it (https://github.com/Behat/MinkSahiDriver/issues/35), and was a PITA to install and configure. If you still want to try (hey, don't mind my opinions!) you can download the .jar installer on "http://sourceforge.net/projects/sahi/files/". I installed it in my home and then used "~/sahi/bin/dashboard.sh" to test it. The weird proxy also didn't work with my install on port 8000, but worked fine with localhost. You can use "sahi.sh" in the same directory to start just the server without the ugly Java dashboard.
 
 ### Usage
 
