@@ -1,4 +1,4 @@
-<img src="https://codeship.io/projects/891969b0-1838-0132-296d-32889be35671/status?branch=master" alt="Codeship build status" />
+[ ![Codeship Status for pelletiermaxime/chef-webui-php](https://www.codeship.io/projects/891969b0-1838-0132-296d-32889be35671/status?branch=master)](https://www.codeship.io/projects/34217)
 
 Chef webui in PHP (with Laravel framework)
 ==========================================
