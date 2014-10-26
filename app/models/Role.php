@@ -27,6 +27,7 @@ class Role
         $role       = new Role;
         $role->name = $name;
         $role->delete();
+        return $role;
     }
 
     /**

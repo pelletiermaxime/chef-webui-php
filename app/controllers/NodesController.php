@@ -33,6 +33,10 @@ class NodesController extends BaseController
                 function () use ($node_name) {
                     $node = Chef::get("/nodes/$node_name");
                     $node->run_list = $this->clean_run_list($node->run_list);
+                    $node->roles = '';
+                    if (!empty($node->run_list['role'])) {
+                        $node->roles = 'role[' . implode('] role[', $node->run_list['role']) . ']';
+                    }
                     return $node;
                 }
             );

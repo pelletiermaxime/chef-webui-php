@@ -67,7 +67,7 @@ Environment: {{ $node->chef_environment }}
 
 {{ Form::hidden('node_name', $node->name) }}
 {{ Form::hidden('run_list', implode(' ', $node->run_list['recipe']), ['id' => 'run_list']) }}
-{{ Form::hidden('roles', 'role[' . implode('] role[', $node->run_list['role']) . ']', ['id' => 'roles']) }}
+{{ Form::hidden('roles', $node->roles, ['id' => 'roles']) }}
 
 <div class="panel panel-primary" id="attributes-override">
     <div class="panel-heading">

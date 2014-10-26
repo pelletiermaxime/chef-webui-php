@@ -62,7 +62,7 @@ class RolesController extends BaseController
      */
     public function destroy($name)
     {
-        Role::destroy($name);
+        $role = Role::destroy($name);
         return Redirect::route('roles.index')->withSuccess($role->messages[0]);
     }
 }
