@@ -71,4 +71,22 @@ class DomainContext extends BaseDomainContext
         $this->role->description  = $new_description;
         $this->role->save();
     }
+
+    /**
+     * @When I delete the role :name
+     */
+    public function iDeleteTheRole($name)
+    {
+        $this->role = Role::find($name);
+        $this->role->delete($name);
+    }
+
+    /**
+     * @Then a role named :name should not exists
+     */
+    public function aRoleNamedShouldNotExists($name)
+    {
+        $role = Role::find($name);
+        PHPUnit_Framework_Assert::assertCount(0, $role);
+    }
 }

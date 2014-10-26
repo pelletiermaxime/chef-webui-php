@@ -84,6 +84,7 @@ class Role
     public function delete()
     {
         Chef::delete("/roles/{$this->name}");
+        $this->messages[] = "Role {$this->name} deleted.";
     }
 
     /**
@@ -92,10 +93,12 @@ class Role
      */
     public static function find($name)
     {
-        $chefRole = Chef::get("/roles/$name");
-
-        if (empty($chefRole->name)) {
-            return [];
+        try {
+            $chefRole = Chef::get("/roles/$name");
+        } catch (Exception $e) {
+            if (empty($chefRole->name)) {
+                return [];
+            }
         }
 
         $role              = new Role;

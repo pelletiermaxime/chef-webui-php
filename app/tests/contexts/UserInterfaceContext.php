@@ -151,4 +151,20 @@ class UserInterfaceContext extends BaseContext
     {
         throw new PendingException();
     }
+
+    /**
+     * @When I delete the role :arg1
+     */
+    public function iDeleteTheRole($arg1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then a role named :arg1 should not exists
+     */
+    public function aRoleNamedShouldNotExists($arg1)
+    {
+        throw new PendingException();
+    }
 }
