@@ -44,7 +44,7 @@ class RolesController extends BaseController
      */
     public function store()
     {
-        $inputs         = Input::only(['name', 'description']);
+        $inputs = Input::only(['name', 'description']);
 
         if (Input::get('action') == 'edit') { // Edit
             $role = Role::find($inputs['name']);

@@ -33,6 +33,9 @@ class DatabagsController extends BaseController
         return $this->index($databags);
     }
 
+    /**
+     * @Get("/{databags}/item/{item}", as="databags.editItem")
+     */
     public function editItem($databags, $item)
     {
         $dataItem = Chef::get("/data/$databags/$item");

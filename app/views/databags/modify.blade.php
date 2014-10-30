@@ -12,6 +12,8 @@
     <?php $fieldNo = 0 ?>
     @include('databags.modifyShowFields')
 
+    @include('databags.addFields')
+
     {{ Form::submit('Save', ['class' => 'btn btn-primary']) }}
 {{Form::close()}}
 @stop
