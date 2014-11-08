@@ -85,8 +85,8 @@ class NodesController extends BaseController
         }
         $node->run_list = array_merge($recipes, $roles);
 
-        // Debugbar::log($input->run_list);
-        // Debugbar::log($node->run_list);
+        Debugbar::log($input->run_list);
+        Debugbar::log($node->run_list);
 
         Chef::put("/nodes/{$input->node_name}", $node);
 
