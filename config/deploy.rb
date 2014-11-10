@@ -29,7 +29,6 @@ set :file_permissions_users, ['www-data']
 
 # Speed up composer by using a copy of previous vendor
 set :copy_files, [
-  'composer.lock',
   'vendor'
 ]
 
