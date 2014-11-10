@@ -192,7 +192,6 @@ return array(
         'View'            => 'Illuminate\Support\Facades\View',
 
         'Chef'            => 'Jenssegers\Chef\Facades\Chef',
-        'Debugbar'        => 'Barryvdh\Debugbar\Facade',
     ),
 
 );
