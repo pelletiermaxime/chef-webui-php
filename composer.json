@@ -9,6 +9,7 @@
 		,"vakata/jstree": "3.0.*"
 		,"components/bootstrap": "3.3.*"
 		,"javve/list.js": "1.1.*"
+		,"barryvdh/laravel-debugbar": "1.*"
 	},
 	"require-dev": {
 		"behat/behat": "3.*"
@@ -19,7 +20,6 @@
 		,"behat/mink-zombie-driver": "~1.2"
 		,"phpunit/phpunit": "~4.3"
 		,"way/generators": "~2.0"
-		,"barryvdh/laravel-debugbar": "1.*"
 		,"barryvdh/laravel-ide-helper": "1.*"
 		,"doctrine/dbal": "~2.4"
 	},
