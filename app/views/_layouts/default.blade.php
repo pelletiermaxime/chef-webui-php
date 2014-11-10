@@ -26,8 +26,8 @@
         <script src="{{ asset("components/list.js/dist/list.min.js") }}"></script>
          @else
         <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jstree/3.0.3/jstree.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jstree/3.0.8/jstree.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js" />
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
