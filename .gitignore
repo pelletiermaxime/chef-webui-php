@@ -10,3 +10,4 @@ _ide_helper_models.php
 app/config/local/*
 app/config/packages/jenssegers/chef/local/config.php
 public/components/
+capistrano/config/deploy/libeo.rb
