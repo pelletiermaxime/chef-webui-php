@@ -40,7 +40,6 @@ class NodesController extends BaseController
                     return $node;
                 }
             );
-            Debugbar::log($node);
         } catch (Exception $e) {
             return Redirect::route('nodes.index');
         }
