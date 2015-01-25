@@ -160,6 +160,14 @@ class UserInterfaceContext extends BaseContext
     }
 
     /**
+     * @When I edit the invalid role :name
+     */
+    public function iEditTheInvalidRole($name)
+    {
+        $this->visit("/roles/$name");
+    }
+
+    /**
      * @When I delete the role :name
      */
     public function iDeleteTheRole($name)

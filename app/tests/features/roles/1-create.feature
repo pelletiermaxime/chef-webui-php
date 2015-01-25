@@ -15,13 +15,3 @@ Feature: Create roles
     Scenario: Create duplicate role "test-role-1"
       When I create a role with name "test-role-1"
       Then I should see the message 'Error saving: Role "test-role-1" already exists.'
-
-    Scenario: Edit role "test-role-1"
-      When I edit the role "test-role-1" with description "Nouvelle description rôle 1"
-      Then I should see the message "Role saved successfully."
-        And a role named "test-role-1" with description "Nouvelle description rôle 1" should exists
-
-    Scenario: Delete role "test-role-1"
-      When I delete the role "test-role-1"
-      Then I should see the message "Role test-role-1 deleted."
-        And a role named "test-role-1" should not exists

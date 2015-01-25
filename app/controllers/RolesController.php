@@ -24,6 +24,10 @@ class RolesController extends BaseController
     {
         $role = Role::find($name);
 
+        if ($role->messages != null) {
+            return Redirect::route('roles.index')->withErrors($role->messages);
+        }
+
         return View::make('roles/show')
             ->withRole($role)
         ;

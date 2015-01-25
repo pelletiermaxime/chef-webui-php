@@ -94,15 +94,16 @@ class Role
      */
     public static function find($name)
     {
+        $role = new Role;
         try {
             $chefRole = Chef::get("/roles/$name");
         } catch (Exception $e) {
             if (empty($chefRole->name)) {
-                return [];
+                $role->messages[] = "Invalid role \"{$name}\".";
+                return $role;
             }
         }
 
-        $role              = new Role;
         $role->name        = $chefRole->name;
         $role->description = $chefRole->description;
         $role->exists      = true;

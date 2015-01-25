@@ -73,6 +73,14 @@ class DomainContext extends BaseDomainContext
     }
 
     /**
+     * @When I edit the invalid role :name
+     */
+    public function iEditTheInvalidRole($name)
+    {
+        $this->role = Role::find($name);
+    }
+
+    /**
      * @When I delete the role :name
      */
     public function iDeleteTheRole($name)
@@ -87,6 +95,9 @@ class DomainContext extends BaseDomainContext
     public function aRoleNamedShouldNotExists($name)
     {
         $role = Role::find($name);
-        PHPUnit_Framework_Assert::assertCount(0, $role);
+        //If not found $role will only countain an error message
+        PHPUnit_Framework_Assert::assertNull($role->name);
+        PHPUnit_Framework_Assert::assertNull($role->description);
+        PHPUnit_Framework_Assert::assertCount(1, $role->messages);
     }
 }

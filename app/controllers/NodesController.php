@@ -41,7 +41,7 @@ class NodesController extends BaseController
                 }
             );
         } catch (Exception $e) {
-            return Redirect::route('nodes.index');
+            return Redirect::route('nodes.index')->withErrors($e->getMessage());
         }
 
         $cookbooks = Cookbooks::getForEnvironment($node->chef_environment);
