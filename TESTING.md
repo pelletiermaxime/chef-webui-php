@@ -61,7 +61,19 @@ Somehow it was 5 times slower than Selenium2 when I tested it (https://github.co
 ### Usage
 
  * Uncomment Sahi or Zombie in behat.yml if you still want to use them after reading my installation instructions. Or just don't touch the file :P.
- * Run "behat". If you don't want to run the non implemented tests, use "behat --tags '~@wip'"
  * If a test fails, it will popup the rendered html before the error in "firefox".
 
+#### Setup before running tests
 
+```
+php artisan serve &
+bundle exec chef-zero -d
+bundle exec berks update -b app/tests/Berksfile
+BERKSHELF_CHEF_CONFIG="app/tests/client.rb" bundle exec berks upload --force -b app/tests/Berksfile
+```
+
+#### Test suites
+
+ * Complete suite: `behat`
+ * Only Gouttes tests (no js): `behat -p travisci`
+ * Only domain tests: `behat -s domain`
