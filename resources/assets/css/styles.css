@@ -1,0 +1,72 @@
+.jstree-leaf {
+	min-height: 30px !important;
+}
+
+.jstree-clicked {
+	background-color: black !important;
+}
+
+.jstree-hovered {
+	background-color: #7a8288 !important;
+}
+
+.jstree-anchor {
+	min-width: 150px;
+}
+
+.run-list, .available_recipes {
+	list-style: none outside none;
+	padding: 7px;
+}
+
+.available_recipe {
+	background-color: #7a8288;
+	border: 1px solid black;
+	font-weight: bold;
+	padding: 4px;
+	text-align: center;
+	width: 19%;
+	float: left;
+	margin-right: 3px;
+	margin-left: 3px;
+	word-wrap: break-word;
+}
+
+.available_role {
+	background-color: #b19507;
+	border: 1px solid black;
+	font-weight: bold;
+	padding: 4px;
+	text-align: center;
+	width: 19%;
+	float: left;
+	margin-right: 3px;
+	margin-left: 3px;
+	word-wrap: break-word;
+}
+
+.run-list .available_recipe {
+	width: 123px;
+}
+
+#panel-available-recipes {
+	width: 73%;
+	float: left;
+	overflow: auto;
+	height: 500px;
+}
+
+#panel-available-run-list {
+	width: 26%;
+	float: right;
+	padding-bottom: 15px;
+	min-height: 100px;
+}
+
+.attribute {
+	width: 350px;
+}
+
+.panel-heading {
+	min-height:43px;
+}

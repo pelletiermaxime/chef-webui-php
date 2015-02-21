@@ -68,8 +68,8 @@ Somehow it was 5 times slower than Selenium2 when I tested it (https://github.co
 ```
 php artisan serve &
 bundle exec chef-zero -d
-bundle exec berks update -b app/tests/Berksfile
-BERKSHELF_CHEF_CONFIG="app/tests/client.rb" bundle exec berks upload --force -b app/tests/Berksfile
+bundle exec berks update -b tests/Berksfile
+BERKSHELF_CHEF_CONFIG="tests/client.rb" bundle exec berks upload --force -b tests/Berksfile
 ```
 
 #### Test suites
