@@ -13,7 +13,7 @@
         </ul>
     @else
         @if (!empty($edit))
-            {{ Form::text("{$attribute_name}{$name}", $value, ['class' => 'attribute']) }}
+            {!! Form::text("{$attribute_name}{$name}", $value, ['class' => 'attribute']) !!}
         @else
             <input disabled value="{{ $value }}" class="attribute" />
         @endif

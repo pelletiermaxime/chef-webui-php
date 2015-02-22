@@ -61,8 +61,6 @@ class Cookbooks
         $cookbook->metadata      = $metadata;
         $cookbook->chef_type     = 'cookbook_version';
 
-        Debugbar::log($cookbook);
-
         Chef::put("/cookbooks/$name/$version", $cookbook);
         Cache::forget('cookbooks');
         Cache::forget('cookbooks_env__default');

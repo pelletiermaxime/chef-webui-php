@@ -14,17 +14,17 @@
     $attributes['id'] ="item_value_{$fieldNo}";
     ?>
     @if (is_array($value))
-        {{ Form::label($field) }}:
+        {!! Form::label($field) !!}:
         <div style="margin-left:20px">
         @include('databags.modifyShowFields', ['item' => $value])
         </div>
     @else
-        {{ Form::label($field, $field) }}
-        {{ Form::hidden('item_name[]', $field) }}
+        {!! Form::label($field, $field) !!}
+        {!! Form::hidden('item_name[]', $field) !!}
          @if (strlen($value) > 120)
-            {{ Form::textarea('item_value[]', $value, $attributes) }}
+            {!! Form::textarea('item_value[]', $value, $attributes) !!}
          @else
-            {{ Form::text('item_value[]', $value, $attributes) }}
+            {!! Form::text('item_value[]', $value, $attributes) !!}
          @endif
     @endif
     </div>

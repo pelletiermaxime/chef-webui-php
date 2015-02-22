@@ -2,14 +2,14 @@ default:
     formatters:
         pretty: true
     autoload:
-        - %paths.base%/app/tests/contexts
+        - %paths.base%/tests/contexts
     suites:
         ui:
-            paths: [ %paths.base%/app/tests/features ]
+            paths: [ %paths.base%/tests/features ]
             contexts: [ UserInterfaceContext ]
             # filters: { tags: '@ui' }
         domain:
-            paths: [ %paths.base%/app/tests/features ]
+            paths: [ %paths.base%/tests/features ]
             contexts: [ DomainContext ]
             filters: { tags: '@domain' }
     extensions:

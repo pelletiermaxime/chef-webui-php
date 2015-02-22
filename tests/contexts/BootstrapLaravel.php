@@ -7,13 +7,9 @@ trait BootstrapLaravel
     */
     public static function bootstrapLaravel()
     {
-        if (!defined('LARAVEL_START')) {
-            $unitTesting = true;
-            $testEnvironment = 'testing';
-            require __DIR__.'/../../../bootstrap/autoload.php';
-            $app = require_once __DIR__.'/../../../bootstrap/start.php';
-            $app->boot();
-        }
+        $app = require __DIR__.'/../../bootstrap/app.php';
+        $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
+        return $app;
     }
 }
 

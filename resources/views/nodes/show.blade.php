@@ -53,7 +53,7 @@ Environment: {{ $node->chef_environment }}
     </ul>
 </div>
 
-{{ Form::open(['route' => ['nodes.store']]) }}
+{!! Form::open(['route' => ['nodes.store']]) !!}
 
 <div>
 <button type="submit" class="btn btn-primary" style="float: right;">
@@ -65,9 +65,9 @@ Environment: {{ $node->chef_environment }}
 
 <h3>Attributes</h3>
 
-{{ Form::hidden('node_name', $node->name) }}
-{{ Form::hidden('run_list', implode(' ', $node->run_list['recipe']), ['id' => 'run_list']) }}
-{{ Form::hidden('roles', $node->roles, ['id' => 'roles']) }}
+{!! Form::hidden('node_name', $node->name) !!}
+{!! Form::hidden('run_list', implode(' ', $node->run_list['recipe']), ['id' => 'run_list']) !!}
+{!! Form::hidden('roles', $node->roles, ['id' => 'roles']) !!}
 
 <div class="panel panel-primary" id="attributes-override">
     <div class="panel-heading">
@@ -129,7 +129,7 @@ Environment: {{ $node->chef_environment }}
     </div>
 </div>
 
-{{ Form::close() }}
+{!! Form::close() !!}
 
 <div class="panel panel-primary" id="attributes-automatic">
     <div class="panel-heading">
