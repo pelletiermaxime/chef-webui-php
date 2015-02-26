@@ -12,4 +12,3 @@ trait BootstrapLaravel
         return $app;
     }
 }
-

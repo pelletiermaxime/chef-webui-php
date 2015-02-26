@@ -56,7 +56,7 @@ class UserInterfaceContext extends BaseContext
      */
     public function iRunChefClient()
     {
-        exec('bundle exec chef-client --config app/tests/client.rb');
+        exec('bundle exec chef-client --config tests/client.rb');
         Cache::forget("node-test-node-1");
     }
 
