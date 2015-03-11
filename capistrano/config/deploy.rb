@@ -4,26 +4,28 @@ lock '3.3.5'
 set :application, 'chefwebui'
 set :repo_url, 'https://github.com/pelletiermaxime/chef-webui-php.git'
 
-set :ssh_options, forward_agent: true, port: 36220
+set :ssh_options, forward_agent: true, port: 36_220
 
 set :deploy_to, '/var/www/chefwebui.pelletiermaxime.info'
 
 set :linked_dirs, [
-  'app/storage/logs',
-  'app/storage/sessions',
-  'app/config/packages/jenssegers/chef'
+  'storage/logs',
+  'storage/framework/cache',
+  'storage/framework/sessions',
+  'storage/framework/views'
 ]
 
 set :linked_files, [
+  '.env'
 ]
 
 set :file_permissions_paths, [
-  'app/storage',
-  'app/storage/cache',
-  'app/storage/logs',
-  'app/storage/meta',
-  'app/storage/sessions',
-  'app/storage/views'
+  'storage',
+  'storage/app',
+  'storage/framework',
+  'storage/framework/sessions',
+  'storage/framework/views',
+  'storage/logs'
 ]
 set :file_permissions_users, ['www-data']
 
@@ -32,23 +34,7 @@ set :copy_files, [
   'vendor'
 ]
 
-# Default branch is :master
-# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
-
-# Default value for :format is :pretty
-# set :format, :pretty
-
-# Default value for :log_level is :debug
-# set :log_level, :info
-
-# Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
-
-# Default value for keep_releases is 5
-# set :keep_releases, 5
-
 namespace :deploy do
-
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
@@ -67,5 +53,4 @@ namespace :deploy do
       # end
     end
   end
-
 end
