@@ -4,3 +4,4 @@
 
 public/components
 capistrano/config/deploy/libeo.rb
+storage/debugbar/
